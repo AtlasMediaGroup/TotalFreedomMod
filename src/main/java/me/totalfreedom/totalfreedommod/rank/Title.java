@@ -8,8 +8,9 @@ public enum Title implements Displayable
     MASTER_BUILDER("a", "Master Builder", ChatColor.DARK_AQUA, org.bukkit.ChatColor.DARK_AQUA, "MB", true, true),
     VERIFIED_ADMIN("a", "Verified Admin", ChatColor.LIGHT_PURPLE, org.bukkit.ChatColor.LIGHT_PURPLE, "VA", false, true),
     EXECUTIVE("an", "Executive", ChatColor.RED, org.bukkit.ChatColor.RED, "Exec", true, true),
+    ASST_EXECUTIVE("an", "Assistant Executive", ChatColor.RED, org.bukkit.ChatColor.RED, "Asst Exec", true, true),
     DEVELOPER("a", "Developer", ChatColor.DARK_PURPLE, org.bukkit.ChatColor.DARK_PURPLE, "Dev", true, true),
-    OWNER("the", "Owner", ChatColor.of("#ff0000"), org.bukkit.ChatColor.DARK_RED, "Owner", true, true);
+    OWNER("the", "Owner", ChatColor.DARK_RED, org.bukkit.ChatColor.DARK_RED, "Owner", true, true);
 
 
     private final String article;
