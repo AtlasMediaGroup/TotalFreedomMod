@@ -23,6 +23,7 @@ import org.bukkit.entity.Player;
 
 public class DiscordToAdminChatListener extends ListenerAdapter
 {
+
     DiscordToMinecraftListener dtml = new DiscordToMinecraftListener();
 
     public static net.md_5.bungee.api.ChatColor getColor(Displayable display)
@@ -37,17 +38,29 @@ public class DiscordToAdminChatListener extends ListenerAdapter
         {
             Member member = event.getMember();
             String tag = dtml.getDisplay(member);
-            StringBuilder message = new StringBuilder(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_AQUA + "Discord" + ChatColor.DARK_GRAY + "] " + ChatColor.RESET);
             Message msg = event.getMessage();
+            String mediamessage = ChatColor.YELLOW + " [Media]";
 
-            message.append(msg.getContentDisplay());
+            StringBuilder logmessage = new StringBuilder(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_AQUA + "Discord" + ChatColor.DARK_GRAY + "] " + ChatColor.RESET);
+            String lm = ChatColor.DARK_RED + member.getEffectiveName() + " "
+                    + ChatColor.DARK_GRAY + tag + ChatColor.DARK_GRAY
+                    + ChatColor.WHITE + ": " + ChatColor.GOLD + FUtil.colorize(msg.getContentDisplay());
+            logmessage.append(lm);
 
-            ComponentBuilder builder = new ComponentBuilder(msg.toString());
+            if (!msg.getAttachments().isEmpty())
+            {
+                
+                logmessage.append(mediamessage); // Actually for logging...
 
-            FLog.info(message.toString());
+            }
+            FLog.info(logmessage.toString());
 
             Bukkit.getOnlinePlayers().stream().filter(player -> TotalFreedomMod.getPlugin().al.isAdmin(player)).forEach(player ->
             {
+                StringBuilder message = new StringBuilder(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_AQUA + "Discord" + ChatColor.DARK_GRAY + "] " + ChatColor.RESET);
+
+                ComponentBuilder builder = new ComponentBuilder(message.toString());
+
                 Admin admin = TotalFreedomMod.getPlugin().al.getAdmin(player);
                 String format = admin.getAcFormat();
                 if (!Strings.isNullOrEmpty(format))
@@ -59,6 +72,7 @@ public class DiscordToAdminChatListener extends ListenerAdapter
                             .replace("%rankcolor%", color.toString())
                             .replace("%msg%", FUtil.colorize(msg.getContentDisplay()));
                     builder.append(FUtil.colorize(m));
+
                 }
                 else
                 {
@@ -72,14 +86,13 @@ public class DiscordToAdminChatListener extends ListenerAdapter
                 {
                     for (Message.Attachment attachment : msg.getAttachments())
                     {
-                        TextComponent text = new TextComponent(ChatColor.YELLOW + "[Media]");
+                        TextComponent text = new TextComponent(mediamessage);
                         text.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, attachment.getUrl()));
                         builder.append(text);
-                        message.append("[Media]"); // for logging
                     }
                 }
-
                 player.spigot().sendMessage(builder.create());
+
             });
         }
     }

@@ -5,7 +5,7 @@
 
     <groupId>me.totalfreedom</groupId>
     <artifactId>TotalFreedomMod</artifactId>
-    <version>2021.02</version>
+    <version>2021.02-Patch.01-RC01</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -75,9 +75,9 @@
         </repository>
 
         <repository>
-            <id>jcenter</id>
-            <name>jcenter-bintray</name>
-            <url>https://jcenter.bintray.com</url>
+            <id>dv8tion</id>
+            <name>m2-dv8tion</name>
+            <url>https://m2.dv8tion.net/releases/</url>
         </repository>
 
         <repository>
@@ -191,7 +191,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.2.0_224</version>
+            <version>4.2.1_255</version>
             <scope>provided</scope>
         </dependency>
 
