@@ -137,7 +137,7 @@ public class Command_adminworld extends FreedomCommand
             {
                 return noPerms();
             }
-            sender.sendMessage(ex.getMessage());
+            msg(ex.getMessage());
             return true;
         }
 

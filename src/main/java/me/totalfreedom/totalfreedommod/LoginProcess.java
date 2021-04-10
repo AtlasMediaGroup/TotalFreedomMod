@@ -246,7 +246,7 @@ public class LoginProcess extends FreedomService
                 FLog.info(noteMessage);
                 for (Player p : server.getOnlinePlayers())
                 {
-                    if (plugin.al.isAdminImpostor(p))
+                    if (plugin.al.isAdmin(p))
                     {
                         notice.send(p);
                     }

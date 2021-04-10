@@ -65,7 +65,7 @@ public class Command_moblimiter extends FreedomCommand
 
         if (ConfigEntry.MOB_LIMITER_ENABLED.getBoolean())
         {
-            sender.sendMessage("Moblimiter enabled. Maximum mobcount set to: " + ConfigEntry.MOB_LIMITER_MAX.getInteger() + ".");
+            msg("Moblimiter enabled. Maximum mobcount set to: " + ConfigEntry.MOB_LIMITER_MAX.getInteger() + ".");
 
             msg("Dragon: " + (ConfigEntry.MOB_LIMITER_DISABLE_DRAGON.getBoolean() ? "disabled" : "enabled") + ".");
             msg("Giant: " + (ConfigEntry.MOB_LIMITER_DISABLE_GIANT.getBoolean() ? "disabled" : "enabled") + ".");

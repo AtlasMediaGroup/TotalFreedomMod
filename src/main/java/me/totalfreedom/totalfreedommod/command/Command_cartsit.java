@@ -23,7 +23,7 @@ public class Command_cartsit extends FreedomCommand
 
             if (targetPlayer == null)
             {
-                sender.sendMessage(FreedomCommand.PLAYER_NOT_FOUND);
+                msg(PLAYER_NOT_FOUND);
                 return true;
             }
         }
@@ -32,7 +32,7 @@ public class Command_cartsit extends FreedomCommand
         {
             if (targetPlayer == null)
             {
-                sender.sendMessage("When used from the console, you must define a target player: /cartsit <player>");
+                msg("When used from the console, you must define a target player: /cartsit <player>");
                 return true;
             }
         }

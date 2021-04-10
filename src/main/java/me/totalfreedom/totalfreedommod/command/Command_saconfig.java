@@ -243,7 +243,7 @@ public class Command_saconfig extends FreedomCommand
                 if (!player.isOp())
                 {
                     player.setOp(true);
-                    player.sendMessage(YOU_ARE_OP);
+                    msg(player, YOU_ARE_OP);
                 }
                 return true;
             }

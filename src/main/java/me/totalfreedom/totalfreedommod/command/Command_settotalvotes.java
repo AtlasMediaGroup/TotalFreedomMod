@@ -55,7 +55,7 @@ public class Command_settotalvotes extends FreedomCommand
 
         if (player != null)
         {
-            player.sendMessage(ChatColor.GREEN + sender.getName() + " has set your total votes to " + votes);
+            msg(player, sender.getName() + " has set your total votes to " + votes, ChatColor.GREEN);
         }
 
         return true;

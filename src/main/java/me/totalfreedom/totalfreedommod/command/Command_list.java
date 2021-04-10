@@ -141,13 +141,13 @@ public class Command_list extends FreedomCommand
                 .append(StringUtils.join(n, ChatColor.WHITE + ", "));
         if (senderIsConsole)
         {
-            sender.sendMessage(ChatColor.stripColor(onlineStats.toString()));
-            sender.sendMessage(ChatColor.stripColor(onlineUsers.toString()));
+            msg(ChatColor.stripColor(onlineStats.toString()));
+            msg(ChatColor.stripColor(onlineUsers.toString()));
         }
         else
         {
-            sender.sendMessage(onlineStats.toString());
-            sender.sendMessage(onlineUsers.toString());
+            msg(onlineStats.toString());
+            msg(onlineUsers.toString());
         }
         n.clear();
         return true;

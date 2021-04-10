@@ -19,7 +19,6 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 
 public class DiscordToAdminChatListener extends ListenerAdapter
 {
@@ -39,7 +38,7 @@ public class DiscordToAdminChatListener extends ListenerAdapter
             Member member = event.getMember();
             String tag = dtml.getDisplay(member);
             Message msg = event.getMessage();
-            String mediamessage = ChatColor.YELLOW + " [Media]";
+            String mediamessage = ChatColor.YELLOW + "[Media]";
 
             StringBuilder logmessage = new StringBuilder(ChatColor.DARK_GRAY + "[" + ChatColor.DARK_AQUA + "Discord" + ChatColor.DARK_GRAY + "] " + ChatColor.RESET);
             String lm = ChatColor.DARK_RED + member.getEffectiveName() + " "
@@ -65,10 +64,10 @@ public class DiscordToAdminChatListener extends ListenerAdapter
                 String format = admin.getAcFormat();
                 if (!Strings.isNullOrEmpty(format))
                 {
-                    Displayable display = TotalFreedomMod.getPlugin().rm.getDisplay(player);
+                    Displayable display = getDisplay(member);
                     net.md_5.bungee.api.ChatColor color = getColor(display);
                     String m = format.replace("%name%", member.getEffectiveName())
-                            .replace("%rank%", getDisplay(member))
+                            .replace("%rank%", display.getAbbr())
                             .replace("%rankcolor%", color.toString())
                             .replace("%msg%", FUtil.colorize(msg.getContentDisplay()));
                     builder.append(FUtil.colorize(m));
@@ -88,6 +87,10 @@ public class DiscordToAdminChatListener extends ListenerAdapter
                     {
                         TextComponent text = new TextComponent(mediamessage);
                         text.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, attachment.getUrl()));
+                        if (!msg.getContentDisplay().isEmpty())
+                        {
+                            builder.append(" ");
+                        }
                         builder.append(text);
                     }
                 }
@@ -98,43 +101,43 @@ public class DiscordToAdminChatListener extends ListenerAdapter
     }
 
     // Needed to display tags in custom AC messages
-    public String getDisplay(Member member)
+    public Displayable getDisplay(Member member)
     {
         Guild server = Discord.bot.getGuildById(ConfigEntry.DISCORD_SERVER_ID.getString());
         // Server Owner
         if (member.getRoles().contains(server.getRoleById(ConfigEntry.DISCORD_SERVER_OWNER_ROLE_ID.getString())))
         {
-            return Title.OWNER.getAbbr();
+            return Title.OWNER;
         }
         // Developers
         else if (member.getRoles().contains(server.getRoleById(ConfigEntry.DISCORD_DEVELOPER_ROLE_ID.getString())))
         {
-            return Title.DEVELOPER.getAbbr();
+            return Title.DEVELOPER;
         }
         // Executives
         else if (member.getRoles().contains(server.getRoleById(ConfigEntry.DISCORD_EXECUTIVE_ROLE_ID.getString())))
         {
-            return Title.EXECUTIVE.getAbbr();
+            return Title.EXECUTIVE;
         }
         // Senior Admins
         else if (member.getRoles().contains(server.getRoleById(ConfigEntry.DISCORD_SENIOR_ADMIN_ROLE_ID.getString())))
         {
-            return Rank.SENIOR_ADMIN.getAbbr();
+            return Rank.SENIOR_ADMIN;
         }
         // Admins
         else if (member.getRoles().contains(server.getRoleById(ConfigEntry.DISCORD_NEW_ADMIN_ROLE_ID.getString())))
         {
-            return Rank.ADMIN.getAbbr();
+            return Rank.ADMIN;
         }
         // Master Builders
         else if (member.getRoles().contains(server.getRoleById(ConfigEntry.DISCORD_MASTER_BUILDER_ROLE_ID.getString())))
         {
-            return Title.MASTER_BUILDER.getAbbr();
+            return Title.MASTER_BUILDER;
         }
         // OP, returning null breaks?
         else
         {
-            return Rank.OP.getAbbr();
+            return Rank.OP;
         }
     }
 }

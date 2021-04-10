@@ -19,7 +19,7 @@ public class Command_survival extends FreedomCommand
         {
             if (isConsole())
             {
-                sender.sendMessage("When used from the console, you must define a target player.");
+                msg("When used from the console, you must define a target player.");
                 return true;
             }
 
@@ -46,7 +46,7 @@ public class Command_survival extends FreedomCommand
 
         if (player == null)
         {
-            sender.sendMessage(FreedomCommand.PLAYER_NOT_FOUND);
+            msg(PLAYER_NOT_FOUND);
             return true;
         }
 

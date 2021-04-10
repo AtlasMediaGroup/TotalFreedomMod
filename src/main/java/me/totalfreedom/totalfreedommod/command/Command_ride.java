@@ -52,7 +52,7 @@ public class Command_ride extends FreedomCommand
             }
 
             msg("Request accepted.");
-            requester.sendMessage(ChatColor.GRAY + "Your request has been accepted.");
+            msg(requester, "Your request has been accepted.");
 
             if (requester.getWorld() != playerSender.getWorld())
             {
@@ -80,7 +80,7 @@ public class Command_ride extends FreedomCommand
             }
             msg("Request denied.");
             RIDE_REQUESTS.remove(playerSender);
-            requester.sendMessage(ChatColor.GRAY + "Your request has been denied.");
+            msg(requester, "Your request has been denied.");
             return true;
         }
 
@@ -123,10 +123,10 @@ public class Command_ride extends FreedomCommand
         if (playerData.getRideMode().equals("ask") && !FUtil.isExecutive(playerSender.getName()))
         {
             msg("Sent a request to the player.", ChatColor.GREEN);
-            player.sendMessage(ChatColor.AQUA + sender.getName() + " has requested to ride you.");
-            player.sendMessage(ChatColor.AQUA + "Type " + ChatColor.GREEN + "/ride accept" + ChatColor.AQUA + " to allow the player to ride you.");
-            player.sendMessage(ChatColor.AQUA + "Type " + ChatColor.RED + "/ride deny" + ChatColor.AQUA + " to deny the player permission.");
-            player.sendMessage(ChatColor.AQUA + "Request will expire in 30 seconds.");
+            msg(player, sender.getName() + " has requested to ride you.", ChatColor.AQUA);
+            msg(player, "Type " + ChatColor.GREEN + "/ride accept" + ChatColor.AQUA + " to allow the player to ride you.", ChatColor.AQUA);
+            msg(player, "Type " + ChatColor.RED + "/ride deny" + ChatColor.AQUA + " to deny the player permission.", ChatColor.AQUA);
+            msg(player, "Request will expire in 30 seconds.", ChatColor.AQUA);
             RIDE_REQUESTS.put(player, playerSender);
 
             new BukkitRunnable()
@@ -139,8 +139,8 @@ public class Command_ride extends FreedomCommand
                     }
 
                     RIDE_REQUESTS.remove(player);
-                    playerSender.sendMessage(ChatColor.RED + "It has been 30 seconds and " + player.getName() + " has not accepted your request.");
-                    player.sendMessage(ChatColor.RED + "Request expired.");
+                    msg(playerSender, "It has been 30 seconds and " + player.getName() + " has not accepted your request.", ChatColor.RED);
+                    msg(player, "Request expired.", ChatColor.RED);
                 }
             }.runTaskLater(plugin, 20 * 30);
             return true;
