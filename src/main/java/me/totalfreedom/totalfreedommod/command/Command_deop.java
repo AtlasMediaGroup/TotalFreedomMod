@@ -39,7 +39,7 @@ public class Command_deop extends FreedomCommand
                 {
                     matchedPlayerNames.add(player.getName());
                     player.setOp(false);
-                    player.sendMessage(FreedomCommand.YOU_ARE_NOT_OP);
+                    msg(player, YOU_ARE_NOT_OP);
                     plugin.rm.updateDisplay(player);
                 }
             }

@@ -138,7 +138,7 @@ public class Command_masterbuilderworld extends FreedomCommand
             {
                 return noPerms();
             }
-            sender.sendMessage(ex.getMessage());
+            msg(ex.getMessage());
             return true;
         }
 

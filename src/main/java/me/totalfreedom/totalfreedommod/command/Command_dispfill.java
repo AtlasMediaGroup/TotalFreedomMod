@@ -43,7 +43,7 @@ public class Command_dispfill extends FreedomCommand
             }
             catch (NumberFormatException ex)
             {
-                sender.sendMessage("Invalid radius.");
+                msg("Invalid radius.");
                 return true;
             }
 
@@ -60,7 +60,7 @@ public class Command_dispfill extends FreedomCommand
                 }
                 else
                 {
-                    sender.sendMessage("Skipping invalid item: " + searchItem);
+                    msg("Skipping invalid item: " + searchItem);
                 }
             }
 
@@ -80,7 +80,8 @@ public class Command_dispfill extends FreedomCommand
                         {
                             if (targetBlock.getType().equals(Material.DISPENSER))
                             {
-                                sender.sendMessage("Filling dispenser @ " + FUtil.formatLocation(targetBlock.getLocation()));
+                                msg("Filling dispenser @ " + FUtil.formatLocation(targetBlock.getLocation()));
+                                plugin.cpb.getCoreProtectAPI().logContainerTransaction(sender.getName(), targetBlock.getLocation());
                                 setDispenserContents(targetBlock, itemsArray);
                                 affected++;
                             }
@@ -89,7 +90,7 @@ public class Command_dispfill extends FreedomCommand
                 }
             }
 
-            sender.sendMessage("Done. " + affected + " dispenser(s) filled.");
+            msg("Done. " + affected + " dispenser(s) filled.");
         }
         else
         {

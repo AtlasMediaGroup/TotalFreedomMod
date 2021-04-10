@@ -21,7 +21,7 @@ public class Command_setplayerlimit extends FreedomCommand
             Player player = Bukkit.getPlayer(args[0]);
             if (player == null)
             {
-                sender.sendMessage(PLAYER_NOT_FOUND);
+                msg(PLAYER_NOT_FOUND);
                 return true;
             }
 

@@ -20,7 +20,7 @@ public class Command_clearchat extends FreedomCommand
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    player.sendMessage("");
+                    msg(player, "");
                 }
             }
         }

@@ -8,6 +8,8 @@ In terms of plugin releases, we support the following versions:
 
 | Version             | Supported          |
 | ------------------- | ------------------ |
+| 2021.04             | :white_check_mark: |
+| 2021.02             | :white_check_mark: |
 | 2020.11             | :white_check_mark: |
 | 6.0.x (Pre-Release) | :x:                |
 | < 2020.11           | :x:                |

@@ -39,7 +39,7 @@ public class Command_inspect extends FreedomCommand
                 }
                 catch (NumberFormatException e)
                 {
-                    sender.sendMessage(ChatColor.RED + "Invalid number");
+                    msg("Invalid number", ChatColor.RED);
                 }
             }
 
@@ -48,19 +48,19 @@ public class Command_inspect extends FreedomCommand
             {
                 if (pageIndex < 1 || pageIndex > paged.getPageCount())
                 {
-                    sender.sendMessage(ChatColor.RED + "Not a valid page number");
+                    msg("Not a valid page number", ChatColor.RED);
                     return true;
                 }
 
-                sender.sendMessage("---- " + net.md_5.bungee.api.ChatColor.of("#30ade4") + "Block Inspector" + ChatColor.WHITE + " ---- ");
+                msg("---- " + net.md_5.bungee.api.ChatColor.of("#30ade4") + "Block Inspector" + ChatColor.WHITE + " ---- ", ChatColor.WHITE);
 
                 List<String> page = paged.getPage(pageIndex);
                 for (String entries : page)
                 {
-                    sender.sendMessage(entries);
+                    msg(entries);
                 }
 
-                sender.sendMessage("Page " + pageIndex + "/" + paged.getPageCount() + " | To index through the pages, type " + net.md_5.bungee.api.ChatColor.of("#30ade4") + "/ins history <page>");
+                msg("Page " + pageIndex + "/" + paged.getPageCount() + " | To index through the pages, type " + net.md_5.bungee.api.ChatColor.of("#30ade4") + "/ins history <page>", ChatColor.WHITE);
                 return true;
             }
         }

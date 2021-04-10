@@ -138,7 +138,7 @@ public class Command_hubworld extends FreedomCommand
             {
                 return noPerms();
             }
-            sender.sendMessage(ex.getMessage());
+            msg(ex.getMessage());
             return true;
         }
 

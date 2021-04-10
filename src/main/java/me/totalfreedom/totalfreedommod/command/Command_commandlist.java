@@ -43,7 +43,7 @@ public class Command_commandlist extends FreedomCommand
 
         Collections.sort(commands);
 
-        sender.sendMessage(StringUtils.join(commands, ", "));
+        msg(StringUtils.join(commands, ", "));
 
         return true;
     }

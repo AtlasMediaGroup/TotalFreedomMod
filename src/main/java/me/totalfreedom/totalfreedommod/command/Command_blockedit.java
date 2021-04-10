@@ -92,7 +92,7 @@ public class Command_blockedit extends FreedomCommand
         final Player player2 = getPlayer(args[0]);
         if (player2 == null)
         {
-            sender.sendMessage(FreedomCommand.PLAYER_NOT_FOUND);
+            msg(PLAYER_NOT_FOUND);
             return true;
         }
 

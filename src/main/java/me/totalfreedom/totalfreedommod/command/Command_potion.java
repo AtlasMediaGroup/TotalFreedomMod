@@ -106,7 +106,7 @@ public class Command_potion extends FreedomCommand
                     {
                         if (!plugin.al.isAdmin(sender) && !getPlayer(args[4]).equals(getPlayer(sender.getName())))
                         {
-                            sender.sendMessage(ChatColor.RED + "Only admins can apply potion effects to other players.");
+                            msg("Only admins can apply potion effects to other players.", ChatColor.RED);
                             return true;
                         }
 
@@ -114,7 +114,7 @@ public class Command_potion extends FreedomCommand
 
                         if (target == null || plugin.al.isVanished(target.getName()) && !plugin.al.isAdmin(sender))
                         {
-                            msg(FreedomCommand.PLAYER_NOT_FOUND, ChatColor.RED);
+                            msg(PLAYER_NOT_FOUND);
                             return true;
                         }
                     }
@@ -122,7 +122,7 @@ public class Command_potion extends FreedomCommand
                     {
                         if (senderIsConsole)
                         {
-                            sender.sendMessage("You must specify a target player when using this command from the console.");
+                            msg("You must specify a target player when using this command from the console.");
                             return true;
                         }
                     }
@@ -130,7 +130,7 @@ public class Command_potion extends FreedomCommand
                     PotionEffectType potion_effect_type = PotionEffectType.getByName(args[1]);
                     if (potion_effect_type == null)
                     {
-                        sender.sendMessage(ChatColor.AQUA + "Invalid potion effect type.");
+                        msg("Invalid potion effect type.", ChatColor.AQUA);
                         return true;
                     }
 

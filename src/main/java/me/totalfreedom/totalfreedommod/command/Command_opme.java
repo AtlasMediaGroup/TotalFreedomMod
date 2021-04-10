@@ -16,7 +16,7 @@ public class Command_opme extends FreedomCommand
     {
         FUtil.adminAction(sender.getName(), "Opping " + sender.getName(), false);
         sender.setOp(true);
-        sender.sendMessage(FreedomCommand.YOU_ARE_OP);
+        msg(YOU_ARE_OP);
         plugin.rm.updateDisplay(playerSender);
         return true;
     }
