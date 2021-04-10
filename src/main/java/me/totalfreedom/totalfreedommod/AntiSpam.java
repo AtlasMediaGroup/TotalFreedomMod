@@ -23,7 +23,7 @@ public class AntiSpam extends FreedomService
     public static final int TICKS_PER_CYCLE = 2 * 10;
     //
     public BukkitTask cycleTask = null;
-    Map<Player, Integer> muteCounts = new HashMap<>();
+    private Map<Player, Integer> muteCounts = new HashMap<>();
 
     @Override
     public void onStart()
