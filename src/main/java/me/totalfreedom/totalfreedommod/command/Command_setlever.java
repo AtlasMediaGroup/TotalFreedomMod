@@ -1,6 +1,7 @@
 package me.totalfreedom.totalfreedommod.command;
 
 import java.util.List;
+
 import me.totalfreedom.totalfreedommod.rank.Rank;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -39,6 +40,12 @@ public class Command_setlever extends FreedomCommand
             return true;
         }
 
+        if (x > 29999998 || x < -29999998 || y > 29999998 || y < -29999998 || z > 29999998 || z < -29999998)
+        {
+            msg("Coordinates cannot be larger than 29999998 or smaller than -29999998 blocks.");
+            return true;
+        }
+
         World world = null;
         final String needleWorldName = args[3].trim();
         final List<World> worlds = server.getWorlds();
@@ -72,6 +79,8 @@ public class Command_setlever extends FreedomCommand
             caster.setPowered(leverOn);
             state.setBlockData(data);
             state.update();
+
+            plugin.cpb.getCoreProtectAPI().logInteraction(sender.getName(), leverLocation);
         }
         else
         {

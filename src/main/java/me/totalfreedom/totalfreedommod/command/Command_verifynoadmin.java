@@ -54,12 +54,12 @@ public class Command_verifynoadmin extends FreedomCommand
             plugin.rm.updateDisplay(player);
             FUtil.adminAction(sender.getName(), "Verified " + player.getName() + ", without admin permissions.", true);
             player.setOp(true);
-            player.sendMessage(YOU_ARE_OP);
+            msg(player, YOU_ARE_OP);
             final FPlayer fPlayer = plugin.pl.getPlayer(player);
             if (fPlayer.getFreezeData().isFrozen())
             {
                 fPlayer.getFreezeData().setFrozen(false);
-                player.sendMessage(ChatColor.GRAY + "You have been unfrozen.");
+                msg(player, "You have been unfrozen.");
             }
             msg("Verified " + player.getName() + " but didn't give them admin permissions", ChatColor.GREEN);
         }

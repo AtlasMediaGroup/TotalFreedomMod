@@ -48,12 +48,12 @@ public class Command_manuallyverify extends FreedomCommand
 
         FUtil.adminAction(sender.getName(), "Manually verifying player " + player.getName(), false);
         player.setOp(true);
-        player.sendMessage(YOU_ARE_OP);
+        msg(player, YOU_ARE_OP);
 
         if (plugin.pl.getPlayer(player).getFreezeData().isFrozen())
         {
             plugin.pl.getPlayer(player).getFreezeData().setFrozen(false);
-            player.sendMessage(ChatColor.GRAY + "You have been unfrozen.");
+            msg(player, "You have been unfrozen.");
         }
 
         plugin.pl.verify(player, null);

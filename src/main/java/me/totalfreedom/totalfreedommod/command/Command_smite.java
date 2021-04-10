@@ -44,7 +44,7 @@ public class Command_smite extends FreedomCommand
         }
         else
         {
-            sender.sendMessage(ChatColor.GRAY + "Smitten " + player.getName() + " quietly.");
+            sender.sendMessage("Smitten " + player.getName() + " quietly.");
         }
 
         // Deop
@@ -112,7 +112,7 @@ public class Command_smite extends FreedomCommand
 
         if (player == null)
         {
-            msg(FreedomCommand.PLAYER_NOT_FOUND);
+            msg(PLAYER_NOT_FOUND);
             return true;
         }
 

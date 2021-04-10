@@ -52,7 +52,7 @@ public class Command_clearinventory extends FreedomCommand
 
                     player.getInventory().clear();
                     msg("Cleared " + player.getName() + "'s inventory.");
-                    player.sendMessage(sender.getName() + " has cleared your inventory.");
+                    msg(player, sender.getName() + " has cleared your inventory.");
                 }
             }
             else

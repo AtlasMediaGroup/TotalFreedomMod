@@ -45,7 +45,7 @@ public class Command_mp44 extends FreedomCommand
         {
             playerdata.disarmMP44();
 
-            sender.sendMessage(ChatColor.GREEN + "mp44 Disarmed.");
+            msg("mp44 Disarmed.", ChatColor.GREEN);
         }
 
         return true;

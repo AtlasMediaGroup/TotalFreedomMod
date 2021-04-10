@@ -42,14 +42,14 @@ public class Command_cage extends FreedomCommand
         Player player = getPlayer(args[0]);
         if (player == null)
         {
-            sender.sendMessage(FreedomCommand.PLAYER_NOT_FOUND);
+            msg(PLAYER_NOT_FOUND);
             return true;
         }
 
         final FPlayer fPlayer = plugin.pl.getPlayer(player);
         if (fPlayer.getCageData().isCaged())
         {
-            sender.sendMessage(ChatColor.RED + "That player is already caged.");
+            msg("That player is already caged.", ChatColor.RED);
             return true;
         }
 
@@ -80,7 +80,7 @@ public class Command_cage extends FreedomCommand
                         outerMaterial = Material.matchMaterial(args[2]);
                         break;
                     }
-                    sender.sendMessage(ChatColor.RED + "Invalid block!");
+                    msg("Invalid block!", ChatColor.RED);
                     break;
                 }
             }

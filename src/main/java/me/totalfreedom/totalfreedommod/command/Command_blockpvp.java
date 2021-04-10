@@ -93,7 +93,7 @@ public class Command_blockpvp extends FreedomCommand
         final Player p = getPlayer(args[0]);
         if (p == null)
         {
-            sender.sendMessage(FreedomCommand.PLAYER_NOT_FOUND);
+            msg(PLAYER_NOT_FOUND);
             return true;
         }
 

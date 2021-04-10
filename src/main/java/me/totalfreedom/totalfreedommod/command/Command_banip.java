@@ -72,8 +72,8 @@ public class Command_banip extends FreedomCommand
             {
                 // Broadcast
                 FLog.info(ChatColor.RED + sender.getName() + " - Banned the IP " + ip);
-                String message = ChatColor.RED + sender.getName() + " - Banned " + (plugin.al.isAdmin(player) ? "the IP " + ip : "an IP");
-                player.sendMessage(message);
+                String message = sender.getName() + " - Banned " + (plugin.al.isAdmin(player) ? "the IP " + ip : "an IP");
+                msg(player, message, ChatColor.RED);
             }
         }
 
