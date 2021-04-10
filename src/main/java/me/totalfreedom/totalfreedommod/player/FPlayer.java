@@ -289,7 +289,7 @@ public class FPlayer
         return unmuteTask != null;
     }
 
-    public void setMuted(boolean muted)
+    public void setMuted(boolean muted, int minutes)
     {
         FUtil.cancel(unmuteTask);
         plugin.mu.MUTED_PLAYERS.remove(getPlayer().getName());
@@ -324,7 +324,12 @@ public class FPlayer
                     plugin.mu.MUTED_PLAYERS.remove(getName());
                 }
             }
-        }.runTaskLater(plugin, AUTO_PURGE_TICKS);
+        }.runTaskLater(plugin, minutes * (60L * 20L));
+    }
+
+    public void setMuted(boolean muted)
+    {
+        setMuted(muted, 5);
     }
 
     public BukkitTask getLockupScheduleID()

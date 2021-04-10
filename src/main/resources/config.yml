@@ -737,3 +737,6 @@ blocked_chatcodes: '&0,&k,&m,&n'
 
 # Enables certain things like debug logs and console bypasses
 developer_mode: false
+
+# AntiSpam Time (minutes)
+antispam_minutes: 2

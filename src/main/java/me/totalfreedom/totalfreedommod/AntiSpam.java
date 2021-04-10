@@ -1,5 +1,6 @@
 package me.totalfreedom.totalfreedommod;
 
+import me.totalfreedom.totalfreedommod.config.ConfigEntry;
 import me.totalfreedom.totalfreedommod.player.FPlayer;
 import me.totalfreedom.totalfreedommod.util.FSync;
 import me.totalfreedom.totalfreedommod.util.FUtil;
@@ -69,22 +70,19 @@ public class AntiSpam extends FreedomService
 
         final FPlayer playerdata = plugin.pl.getPlayerSync(player);
         int count = muteCounts.getOrDefault(player, 0);
+        int minutes = ConfigEntry.ANTISPAM_MINUTES.getInteger();
 
         // Check for spam
-        if (playerdata.incrementAndGetMsgCount() > MSG_PER_CYCLE)
+        if (playerdata.incrementAndGetMsgCount() > MSG_PER_CYCLE && !playerdata.isMuted())
         {
             count++;
             muteCounts.put(player, count);
-            plugin.mu.MUTED_PLAYERS.add(player.getName());
+            playerdata.setMuted(true, count * minutes);
 
             FSync.bcastMsg(String.format("%s has automatically been muted for %d minutes for spamming chat.",
                     player.getName(),
                     count),
                     ChatColor.RED);
-
-            server.getScheduler().runTaskLater(plugin, () ->
-                            plugin.mu.MUTED_PLAYERS.remove(player.getName()),
-                    count * (2L * 20L * 60L));
 
             playerdata.resetMsgCount();
             event.setCancelled(true);
