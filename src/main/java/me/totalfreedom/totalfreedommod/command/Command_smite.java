@@ -15,21 +15,21 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Someone being a little bitch? Smite them down...", usage = "/<command> <player> [reason] [-q]")
+@CommandParameters(description = "Someone being a little bitch? Smite them down...", usage = "/<command> <player> [reason] [-c | -q]")
 public class Command_smite extends FreedomCommand
 {
 
     public static void smite(CommandSender sender, Player player)
     {
-        smite(sender, player, null, false);
+        smite(sender, player, null, false, false);
     }
 
     public static void smite(CommandSender sender, Player player, String reason)
     {
-        smite(sender, player, reason, false);
+        smite(sender, player, reason, false, false);
     }
 
-    public static void smite(CommandSender sender, Player player, String reason, Boolean silent)
+    public static void smite(CommandSender sender, Player player, String reason, Boolean silent, Boolean clearinv)
     {
         player.sendTitle(ChatColor.RED + "You've been smitten.", ChatColor.YELLOW + "Be sure to follow the rules!", 20, 100, 60);
 
@@ -54,7 +54,10 @@ public class Command_smite extends FreedomCommand
         player.setGameMode(GameMode.SURVIVAL);
 
         // Clear inventory
-        player.getInventory().clear();
+        if (clearinv)
+        {
+            player.getInventory().clear();
+        }
 
         // Strike with lightning effect
         final Location targetPos = player.getLocation();
@@ -88,6 +91,7 @@ public class Command_smite extends FreedomCommand
 
         String reason = null;
         boolean silent = false;
+        boolean clearinv = false;
         if (args.length >= 2)
         {
             if (args[args.length - 1].equalsIgnoreCase("-q"))
@@ -95,6 +99,18 @@ public class Command_smite extends FreedomCommand
                 if (args[args.length - 1].equalsIgnoreCase("-q"))
                 {
                     silent = true;
+                }
+
+                if (args.length >= 3)
+                {
+                    reason = StringUtils.join(ArrayUtils.subarray(args, 1, args.length - 1), " ");
+                }
+            }
+            else if (args[args.length - 1].equalsIgnoreCase("-c"))
+            {
+                if (args[args.length - 1].equalsIgnoreCase("-c"))
+                {
+                    clearinv = true;
                 }
 
                 if (args.length >= 3)
@@ -116,7 +132,7 @@ public class Command_smite extends FreedomCommand
             return true;
         }
 
-        smite(sender, player, reason, silent);
+        smite(sender, player, reason, silent, clearinv);
 
         plugin.pul.logPunishment(new Punishment(player.getName(), FUtil.getIp(player), sender.getName(), PunishmentType.SMITE, reason));
 
