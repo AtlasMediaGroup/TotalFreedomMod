@@ -13,6 +13,8 @@ import java.util.Objects;
 import java.util.SplittableRandom;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.security.auth.login.LoginException;
 import me.totalfreedom.totalfreedommod.FreedomService;
 import me.totalfreedom.totalfreedommod.admin.Admin;
@@ -60,6 +62,7 @@ public class Discord extends FreedomService
     public ScheduledThreadPoolExecutor RATELIMIT_EXECUTOR;
     public List<CompletableFuture<Message>> sentMessages = new ArrayList<>();
     public Boolean enabled = false;
+    private final Pattern DISCORD_MENTION_PATTERN = Pattern.compile("(<@!?([0-9]{16,20})>)");
 
     public static String getMD5(String string)
     {
@@ -408,6 +411,15 @@ public class Discord extends FreedomService
             message = StringUtils.remove(message, "§");
         }
 
+
+        Matcher DISCORD_MENTION_MATCHER = DISCORD_MENTION_PATTERN.matcher(message);
+
+        while (DISCORD_MENTION_MATCHER.find())
+        {
+            String mention = DISCORD_MENTION_MATCHER.group(1);
+            message = message.replace(mention, mention.replace("@",""));
+        }
+
         if (enabled && !chat_channel_id.isEmpty())
         {
             CompletableFuture<Message> sentMessage = Objects.requireNonNull(bot.getTextChannelById(chat_channel_id)).sendMessage(deformat(message)).submit(true);
@@ -431,6 +443,15 @@ public class Discord extends FreedomService
         if (message.contains("§"))
         {
             message = StringUtils.remove(message, "§");
+        }
+
+
+        Matcher DISCORD_MENTION_MATCHER = DISCORD_MENTION_PATTERN.matcher(message);
+
+        while (DISCORD_MENTION_MATCHER.find())
+        {
+            String mention = DISCORD_MENTION_MATCHER.group(1);
+            message = message.replace(mention, mention.replace("@",""));
         }
 
         if (enabled && !chat_channel_id.isEmpty())

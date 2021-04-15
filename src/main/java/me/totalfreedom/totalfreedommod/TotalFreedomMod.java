@@ -28,7 +28,6 @@ import me.totalfreedom.totalfreedommod.command.CommandLoader;
 import me.totalfreedom.totalfreedommod.config.MainConfig;
 import me.totalfreedom.totalfreedommod.discord.Discord;
 import me.totalfreedom.totalfreedommod.freeze.Freezer;
-import me.totalfreedom.totalfreedommod.fun.CurseListener;
 import me.totalfreedom.totalfreedommod.fun.ItemFun;
 import me.totalfreedom.totalfreedommod.fun.Jumppads;
 import me.totalfreedom.totalfreedommod.fun.Landminer;
@@ -116,7 +115,6 @@ public class TotalFreedomMod extends JavaPlugin
     public Monitors mo;
     public MovementValidator mv;
     public ServerPing sp;
-    public CurseListener cul;
     public ItemFun it;
     public Landminer lm;
     public MP44 mp;
@@ -368,7 +366,6 @@ public class TotalFreedomMod extends JavaPlugin
         private void initFun()
         {
             // Fun
-            cul = new CurseListener();
             it = new ItemFun();
             lm = new Landminer();
             mp = new MP44();
