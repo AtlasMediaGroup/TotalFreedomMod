@@ -188,6 +188,16 @@ public class PlayerData
         return true;
     }
 
+    public void removeCoins(int coins)
+    {
+        this.coins = this.coins - coins;
+    }
+
+    public void addCoins(int coins)
+    {
+        this.coins = this.coins + coins;
+    }
+
     public void giveItem(ShopItem item)
     {
         items.add(item.getDataName());
