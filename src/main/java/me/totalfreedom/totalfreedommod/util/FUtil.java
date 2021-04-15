@@ -72,10 +72,10 @@ public class FUtil
             "c8e5af82-6aba-4dd7-83e8-474381380cc9", // Paldiu
             "38ea7c82-7bdc-4f48-b7fd-0e93fc26813d", // AwesomePinch
             "ba5aafba-9012-418f-9819-a7020d591068",  // TFTWPhoenix
-            "b051abdf-66d1-48c0-96ef-67fb8af96f2a", // Abhi
+            "d6dd9740-40db-45f5-ab16-4ee16a633009", // Abhi
             "2e06e049-24c8-42e4-8bcf-d35372af31e6" // unsuperiordev
     );
-    public static final List<String> DEVELOPER_NAMES = Arrays.asList("Madgeek1450", "Prozza", "WickedGamingUK", "Wild1145", "aggelosQQ", "scripthead", "CoolJWB", "elmon_", "speednt", "SupItsDillon", "Paldiu", "AwesomePinch", "TFTWPhoenix","Spigot_Abhiram", "unsuperiordev");
+    public static final List<String> DEVELOPER_NAMES = Arrays.asList("Madgeek1450", "Prozza", "WickedGamingUK", "Wild1145", "aggelosQQ", "scripthead", "CoolJWB", "elmon_", "speednt", "SupItsDillon", "Paldiu", "AwesomePinch", "TFTWPhoenix","abhithedev", "unsuperiordev");
     public static final Map<String, ChatColor> CHAT_COLOR_NAMES = new HashMap<>();
     public static final List<ChatColor> CHAT_COLOR_POOL = Arrays.asList(
             ChatColor.DARK_RED,
