@@ -226,6 +226,7 @@ allow:
   respawnanchors: false
   auto_tp: false
   auto_clear: false
+  gravity: false
 
 # Blocked commands:
 #

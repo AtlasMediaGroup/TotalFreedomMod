@@ -34,6 +34,7 @@ public enum ConfigEntry
     ALLOW_RESPAWN_ANCHORS(Boolean.class, "allow.respawnanchors"),
     AUTO_TP(Boolean.class, "allow.auto_tp"),
     AUTO_CLEAR(Boolean.class, "allow.auto_clear"),
+    ALLOW_GRAVITY(Boolean.class, "allow.gravity"),
     //
     BLOCKED_CHATCODES(String.class, "blocked_chatcodes"),
     //

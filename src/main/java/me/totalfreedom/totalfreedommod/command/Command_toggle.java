@@ -54,6 +54,7 @@ public class Command_toggle extends FreedomCommand
             msg("- landmines");
             msg("- mp44");
             msg("- tossmob");
+            msg("- gravity");
             return false;
         }
 
@@ -297,6 +298,12 @@ public class Command_toggle extends FreedomCommand
                 toggle("Tossmob is", ConfigEntry.TOSSMOB_ENABLED);
                 break;
             }
+
+            case "gravity":
+            {
+                toggle("Block gravity is", ConfigEntry.ALLOW_GRAVITY);
+                break;
+            }
         }
         return true;
     }
@@ -320,7 +327,7 @@ public class Command_toggle extends FreedomCommand
                     "waterplace", "fireplace", "lavaplace", "fluidspread", "lavadmg", "firespread", "frostwalk",
                     "firework", "prelog", "lockdown", "petprotect", "entitywipe", "nonuke", "explosives", "unsafeenchs",
                     "bells", "armorstands", "structureblocks", "jigsaws", "grindstones", "jukeboxes", "spawners", "4chan", "beehives",
-                    "respawnanchors", "autotp", "autoclear", "minecarts", "mp44", "landmines", "tossmob");
+                    "respawnanchors", "autotp", "autoclear", "minecarts", "mp44", "landmines", "tossmob", "gravity");
         }
         return Collections.emptyList();
     }
