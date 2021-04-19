@@ -14,6 +14,7 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.block.data.AnaloguePowerable;
 import org.bukkit.block.data.Powerable;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Tameable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -30,6 +31,7 @@ import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.ExplosionPrimeEvent;
 import org.bukkit.event.entity.FireworkExplodeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -207,6 +209,15 @@ public class EventBlocker extends FreedomService
     public void onBlockPistonExtend(BlockPistonExtendEvent event)
     {
         if (!ConfigEntry.ALLOW_REDSTONE.getBoolean())
+        {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onEntitySpawn(EntitySpawnEvent event)
+    {
+        if (!ConfigEntry.ALLOW_GRAVITY.getBoolean() && event.getEntity() instanceof FallingBlock)
         {
             event.setCancelled(true);
         }
