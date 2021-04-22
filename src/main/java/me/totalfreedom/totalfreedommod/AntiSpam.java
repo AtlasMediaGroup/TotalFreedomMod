@@ -1,7 +1,6 @@
 package me.totalfreedom.totalfreedommod;
 
-import java.util.ArrayList;
-import java.util.List;
+import me.totalfreedom.totalfreedommod.config.ConfigEntry;
 import me.totalfreedom.totalfreedommod.player.FPlayer;
 import me.totalfreedom.totalfreedommod.util.FSync;
 import me.totalfreedom.totalfreedommod.util.FUtil;
@@ -11,9 +10,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class AntiSpam extends FreedomService
 {
@@ -22,7 +23,7 @@ public class AntiSpam extends FreedomService
     public static final int TICKS_PER_CYCLE = 2 * 10;
     //
     public BukkitTask cycleTask = null;
-    List<Player> markedForDeath = new ArrayList<>();
+    private Map<Player, Integer> muteCounts = new HashMap<>();
 
     @Override
     public void onStart()
@@ -67,23 +68,26 @@ public class AntiSpam extends FreedomService
             return;
         }
 
-        String message = event.getMessage().trim();
-
         final FPlayer playerdata = plugin.pl.getPlayerSync(player);
+        int count = muteCounts.getOrDefault(player, 0);
+        int minutes = ConfigEntry.ANTISPAM_MINUTES.getInteger();
 
         // Check for spam
-        if (playerdata.incrementAndGetMsgCount() > MSG_PER_CYCLE)
+        if (playerdata.incrementAndGetMsgCount() > MSG_PER_CYCLE && !playerdata.isMuted())
         {
-            if (!markedForDeath.contains(player))
-            {
-                markedForDeath.add(player);
-                FSync.bcastMsg(player.getName() + " was automatically kicked for spamming chat.", ChatColor.RED);
-                FSync.autoEject(player, "Kicked for spamming chat.");
+            count++;
+            muteCounts.put(player, count);
 
-                playerdata.resetMsgCount();
+            int time = count * minutes;
+            playerdata.setMuted(true, time);
 
-                event.setCancelled(true);
-            }
+            FSync.bcastMsg(String.format("%s has automatically been muted for %d minutes for spamming chat.",
+                    player.getName(),
+                    time),
+                    ChatColor.RED);
+
+            playerdata.resetMsgCount();
+            event.setCancelled(true);
         }
         else if (playerdata.incrementAndGetMsgCount() > MSG_PER_CYCLE / 2)
         {
@@ -121,11 +125,5 @@ public class AntiSpam extends FreedomService
             fPlayer.resetMsgCount();
             event.setCancelled(true);
         }
-    }
-
-    @EventHandler(priority = EventPriority.NORMAL)
-    public void onPlayerKick(PlayerKickEvent event)
-    {
-        markedForDeath.remove(event.getPlayer());
     }
 }
