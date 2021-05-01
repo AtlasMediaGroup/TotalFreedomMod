@@ -88,6 +88,8 @@ public class Module_list extends HTTPDModule
                 }
             }
 
+            int count = server.getOnlinePlayers().size() - AdminList.vanished.size();
+
             // for future refernce - any multi-worded ranks are to be delimited by underscores in the json; eg. senior_admins
             responseObject.put("owners", owners);
             responseObject.put("executives", executives);
@@ -97,7 +99,7 @@ public class Module_list extends HTTPDModule
             responseObject.put("master_builders", masterbuilders);
             responseObject.put("operators", operators);
             responseObject.put("imposters", imposters);
-            responseObject.put("online", server.getOnlinePlayers().size() - AdminList.vanished.size());
+            responseObject.put("online", count < 0 ? 0 : count);
             responseObject.put("max", server.getMaxPlayers());
 
             final NanoHTTPD.Response response = new NanoHTTPD.Response(NanoHTTPD.Response.Status.OK, NanoHTTPD.MIME_JSON, responseObject.toString());
@@ -110,7 +112,8 @@ public class Module_list extends HTTPDModule
 
             final Collection<? extends Player> onlinePlayers = Bukkit.getOnlinePlayers();
 
-            body.append("<p>There are ").append(onlinePlayers.size() - AdminList.vanished.size()).append("/")
+            int count = onlinePlayers.size() - AdminList.vanished.size();
+            body.append("<p>There are ").append(count < 0 ? 0 : count).append("/")
                     .append(Bukkit.getMaxPlayers()).append(" players online:</p>\r\n");
 
             body.append("<ul>\r\n");
