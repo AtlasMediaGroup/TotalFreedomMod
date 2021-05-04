@@ -6,14 +6,14 @@ We currently support the code running on the "main" branch and "development" bra
 
 In terms of plugin releases, our support matrix is as follows:
 
-### Actively Supported:
+### Actively Supported
 These versions are currently actively supported by our team, and you should expect security patches where appropriate for these versions. 
 
 | Version             | Supported          | Support End:                   |
 | ------------------- | ------------------ | ------------------------------ |
 | 2021.05             | :white_check_mark: | No Earlier than August 2021    |
 
-###  Legacy Supported:
+###  Legacy Supported
 These versions are no longer under active development, however we will look to release critical secuirty patches where appropriate. 
 
 | Version             | Supported          | Support End: |
@@ -21,7 +21,7 @@ These versions are no longer under active development, however we will look to r
 | 2021.04             | :white_check_mark: | July 2021    |
 | 2021.02             | :white_check_mark: | June 2021    |
 
-###  No Longer Supported:
+###  No Longer Supported
 These versions are no longer supported at all. It is strongly advised to update if you are running any of these versions. 
 
 | Version             | Supported          | Support Ended:      |
