@@ -54,7 +54,7 @@ public class WorldRestrictions extends FreedomService
     {
         if (!plugin.pl.getData(player).isMasterBuilder() && plugin.pl.canManageMasterBuilders(player.getName()))
         {
-            if (player.getWorld().equals(plugin.wm.masterBuilderWorld.getWorld()) || player.getWorld().equals(plugin.wm.hubworld.getWorld()))
+            if (player.getWorld().equals(plugin.wm.masterBuilderWorld.getWorld()))
             {
                 return true;
             }
