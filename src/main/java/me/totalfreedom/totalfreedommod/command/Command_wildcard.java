@@ -3,6 +3,8 @@ package me.totalfreedom.totalfreedommod.command;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import me.totalfreedom.totalfreedommod.config.ConfigEntry;
 import me.totalfreedom.totalfreedommod.rank.Rank;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
@@ -14,14 +16,6 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Run any command on all users, username placeholder = ?.", usage = "/<command> [fluff] ? [fluff] ?")
 public class Command_wildcard extends FreedomCommand
 {
-
-    public static final List<String> BLOCKED_COMMANDS = Arrays.asList(
-            "wildcard",
-            "gtfo",
-            "doom",
-            "slconfig",
-            "smite"
-    );
 
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
@@ -52,7 +46,7 @@ public class Command_wildcard extends FreedomCommand
             aliases = Arrays.asList(fCmd.getAliases().split(","));
         }
 
-        for (String blockedCommand : BLOCKED_COMMANDS)
+        for (String blockedCommand : ConfigEntry.WILDCARD_BLOCKED_COMMANDS.getStringList())
         {
             if (blockedCommand.equals(args[0].toLowerCase()) || aliases.contains(blockedCommand))
             {

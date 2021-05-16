@@ -1,7 +1,8 @@
 package me.totalfreedom.totalfreedommod.command;
 
-import java.util.Arrays;
 import java.util.List;
+
+import me.totalfreedom.totalfreedommod.config.ConfigEntry;
 import me.totalfreedom.totalfreedommod.player.FPlayer;
 import me.totalfreedom.totalfreedommod.player.PlayerData;
 import me.totalfreedom.totalfreedommod.rank.Rank;
@@ -18,9 +19,6 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Allows you to set your own prefix.", usage = "/<command> [-s[ave]] <set <tag..> | list | gradient <hex> <hex> <tag..> | off | clear <player> | clearall>")
 public class Command_tag extends FreedomCommand
 {
-
-    public static final List<String> FORBIDDEN_WORDS = Arrays.asList(
-            "admin", "owner", "moderator", "developer", "console", "dev", "staff", "mod", "sra", "tca", "sta", "sa");
 
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
@@ -170,7 +168,7 @@ public class Command_tag extends FreedomCommand
 
                     if (!plugin.al.isAdmin(sender))
                     {
-                        for (String word : FORBIDDEN_WORDS)
+                        for (String word : ConfigEntry.FORBIDDEN_WORDS.getStringList())
                         {
                             if (rawTag.contains(word))
                             {
@@ -261,7 +259,7 @@ public class Command_tag extends FreedomCommand
 
                     if (!plugin.al.isAdmin(sender))
                     {
-                        for (String word : FORBIDDEN_WORDS)
+                        for (String word : ConfigEntry.FORBIDDEN_WORDS.getStringList())
                         {
                             if (rawTag.contains(word))
                             {
