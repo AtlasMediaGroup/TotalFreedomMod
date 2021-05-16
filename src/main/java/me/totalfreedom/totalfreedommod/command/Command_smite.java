@@ -15,7 +15,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.ADMIN, source = SourceType.BOTH)
-@CommandParameters(description = "Someone being a little bitch? Smite them down...", usage = "/<command> <player> [reason] [-c | -q]")
+@CommandParameters(description = "Someone being a little bitch? Smite them down...", usage = "/<command> <player> [reason] [-ci | -q]")
 public class Command_smite extends FreedomCommand
 {
 
@@ -106,9 +106,9 @@ public class Command_smite extends FreedomCommand
                     reason = StringUtils.join(ArrayUtils.subarray(args, 1, args.length - 1), " ");
                 }
             }
-            else if (args[args.length - 1].equalsIgnoreCase("-c"))
+            else if (args[args.length - 1].equalsIgnoreCase("-ci"))
             {
-                if (args[args.length - 1].equalsIgnoreCase("-c"))
+                if (args[args.length - 1].equalsIgnoreCase("-ci"))
                 {
                     clearinv = true;
                 }
