@@ -227,7 +227,7 @@ public class Shop extends FreedomService
         ItemStack itemStack = new ItemStack(Material.BLAZE_ROD);
         ItemMeta itemMeta = itemStack.getItemMeta();
         assert itemMeta != null;
-        itemMeta.setDisplayName(FUtil.colorize("&bL&3i&bg&3h&bt&3i&bn&3g &b&bR&3o&bd"));
+        itemMeta.setDisplayName(FUtil.colorize("&bL&3i&bg&3h&bt&3n&bi&3n&bg &3R&bo&3d"));
         itemMeta.setLore(Arrays.asList(ChatColor.AQUA + "Strike others down with the power of lightning.", ChatColor.RED + ChatColor.ITALIC.toString() + "The classic way to exterminate annoyances."));
         itemMeta.addEnchant(Enchantment.CHANNELING, 1, false);
         itemStack.setItemMeta(itemMeta);

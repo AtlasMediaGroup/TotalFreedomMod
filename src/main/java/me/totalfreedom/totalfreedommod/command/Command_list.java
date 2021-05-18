@@ -88,7 +88,7 @@ public class Command_list extends FreedomCommand
 
         List<String> n = new ArrayList<>();
 
-        if (listFilter == ListFilter.TELNET_SESSIONS && plugin.al.isAdmin(sender) && plugin.al.getAdmin(playerSender).getRank().isAtLeast(Rank.ADMIN))
+        if (listFilter == ListFilter.TELNET_SESSIONS && plugin.al.isAdmin(sender))
         {
             List<Admin> connectedAdmins = plugin.btb.getConnectedAdmins();
             onlineStats.append(ChatColor.BLUE).append("There are ").append(ChatColor.RED).append(connectedAdmins.size())

@@ -119,6 +119,11 @@ public class DiscordToAdminChatListener extends ListenerAdapter
         {
             return Title.EXECUTIVE;
         }
+        // Assistant Executives
+        else if (member.getRoles().contains(server.getRoleById(ConfigEntry.DISCORD_ASSISTANT_EXECUTIVE_ROLE_ID.getString())))
+        {
+            return Title.ASSTEXEC;
+        }
         // Senior Admins
         else if (member.getRoles().contains(server.getRoleById(ConfigEntry.DISCORD_SENIOR_ADMIN_ROLE_ID.getString())))
         {

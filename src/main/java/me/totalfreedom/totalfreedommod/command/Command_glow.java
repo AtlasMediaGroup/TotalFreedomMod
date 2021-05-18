@@ -26,7 +26,7 @@ public class Command_glow extends FreedomCommand
             playerSender.addPotionEffect(glow);
             glowing = true;
         }
-        msg("You " + (glowing ? "are now" : "no longer") + " glowing.");
+        msg("You are " + (glowing ? "now" : "no longer") + " glowing.");
         return true;
     }
 }

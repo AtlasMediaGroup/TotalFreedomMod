@@ -1,13 +1,11 @@
 package me.totalfreedom.totalfreedommod;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import me.totalfreedom.totalfreedommod.config.ConfigEntry;
 import me.totalfreedom.totalfreedommod.player.FPlayer;
 import me.totalfreedom.totalfreedommod.util.FLog;
 import me.totalfreedom.totalfreedommod.util.FSync;
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
@@ -20,7 +18,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class Muter extends FreedomService
 {
 
-    public static final List<String> MUTE_COMMANDS = Arrays.asList(StringUtils.split("say,me,msg,tell,reply,mail", ","));
     public final List<String> MUTED_PLAYERS = new ArrayList<>();
 
     @Override
@@ -88,7 +85,7 @@ public class Muter extends FreedomService
             cmdName = command.getName().toLowerCase();
         }
 
-        if (MUTE_COMMANDS.contains(cmdName))
+        if (ConfigEntry.MUTED_BLOCKED_COMMANDS.getStringList().contains(cmdName))
         {
             player.sendMessage(ChatColor.RED + "That command is blocked while you are muted.");
             event.setCancelled(true);

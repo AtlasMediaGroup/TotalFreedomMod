@@ -26,7 +26,7 @@ public class Command_ride extends FreedomCommand
         final FPlayer fPlayer = plugin.pl.getPlayer(playerSender);
         if (fPlayer.getCageData().isCaged())
         {
-            msg("You cannot used this command while caged.");
+            msg("You cannot use this command while caged.");
             return true;
         }
 

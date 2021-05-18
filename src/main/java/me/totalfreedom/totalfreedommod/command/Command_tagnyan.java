@@ -1,5 +1,6 @@
 package me.totalfreedom.totalfreedommod.command;
 
+import me.totalfreedom.totalfreedommod.config.ConfigEntry;
 import me.totalfreedom.totalfreedommod.player.FPlayer;
 import me.totalfreedom.totalfreedommod.rank.Rank;
 import me.totalfreedom.totalfreedommod.util.FUtil;
@@ -43,7 +44,7 @@ public class Command_tagnyan extends FreedomCommand
 
         if (!plugin.al.isAdmin(sender))
         {
-            for (String word : Command_tag.FORBIDDEN_WORDS)
+            for (String word : ConfigEntry.FORBIDDEN_WORDS.getStringList())
             {
                 if (rawTag.contains(word))
                 {

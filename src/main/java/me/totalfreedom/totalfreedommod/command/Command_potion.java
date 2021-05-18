@@ -65,7 +65,7 @@ public class Command_potion extends FreedomCommand
                     Player target = playerSender;
                     if (args.length == 2)
                     {
-                        if (!plugin.al.isAdmin(sender) && !target.equals(getPlayer(sender.getName())))
+                        if (!plugin.al.isAdmin(sender) && !args[1].equalsIgnoreCase(sender.getName()))
                         {
                             msg(ChatColor.RED + "Only admins can clear potion effects from other players.");
                             return true;
@@ -104,7 +104,7 @@ public class Command_potion extends FreedomCommand
 
                     if (args.length == 5)
                     {
-                        if (!plugin.al.isAdmin(sender) && !getPlayer(args[4]).equals(getPlayer(sender.getName())))
+                        if (!plugin.al.isAdmin(sender) && !args[4].equalsIgnoreCase(sender.getName()))
                         {
                             msg("Only admins can apply potion effects to other players.", ChatColor.RED);
                             return true;
