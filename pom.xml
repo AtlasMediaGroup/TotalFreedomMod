@@ -252,9 +252,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.TotalFreedomMC</groupId>
+            <groupId>com.github.AtlasMediaGroup</groupId>
             <artifactId>TFGuilds</artifactId>
-            <version>db036fb187</version>
+            <version>master-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
