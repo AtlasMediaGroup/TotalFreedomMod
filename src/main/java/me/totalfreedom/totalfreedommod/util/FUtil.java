@@ -836,6 +836,19 @@ public class FUtil
         }.runTaskLater(TotalFreedomMod.getPlugin(), delay);
     }
 
+    public static int getFakePlayerCount()
+    {
+        int i = TotalFreedomMod.getPlugin().al.vanished.size();
+        for (String name : TotalFreedomMod.getPlugin().al.vanished)
+        {
+            if (Bukkit.getPlayer(name) == null)
+            {
+                i--;
+            }
+        }
+        return getServer().getOnlinePlayers().size() - i;
+    }
+
     public static class PaginationList<T> extends ArrayList<T>
     {
 

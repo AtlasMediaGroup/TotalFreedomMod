@@ -101,8 +101,7 @@ public class Command_list extends FreedomCommand
         }
         else
         {
-            int count = server.getOnlinePlayers().size() - AdminList.vanished.size();
-            onlineStats.append(ChatColor.BLUE).append("There are ").append(ChatColor.RED).append(count < 0 ? 0 : count)
+            onlineStats.append(ChatColor.BLUE).append("There are ").append(ChatColor.RED).append(FUtil.getFakePlayerCount())
                     .append(ChatColor.BLUE)
                     .append(" out of a maximum ")
                     .append(ChatColor.RED)
