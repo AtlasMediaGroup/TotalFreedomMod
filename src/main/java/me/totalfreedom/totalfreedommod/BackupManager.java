@@ -1,6 +1,5 @@
 package me.totalfreedom.totalfreedommod;
 
-import java.io.File;
 import me.totalfreedom.totalfreedommod.banning.IndefiniteBanList;
 import me.totalfreedom.totalfreedommod.config.YamlConfig;
 import me.totalfreedom.totalfreedommod.permissions.PermissionConfig;
@@ -9,8 +8,11 @@ import me.totalfreedom.totalfreedommod.util.FLog;
 import me.totalfreedom.totalfreedommod.util.FUtil;
 import org.bukkit.util.FileUtil;
 
+import java.io.File;
+
 public class BackupManager extends FreedomService
 {
+
     @Override
     public void onStart()
     {
@@ -42,16 +44,16 @@ public class BackupManager extends FreedomService
         config.load();
 
         // Weekly
-        if (!config.isInt(save + ".weekly"))
+        if (!config.isLong(save + ".weekly"))
         {
             performBackup(file, "weekly");
             config.set(save + ".weekly", FUtil.getUnixTime());
         }
         else
         {
-            int lastBackupWeekly = config.getInt(save + ".weekly");
+            long lastBackupWeekly = config.getLong(save + ".weekly");
 
-            if (lastBackupWeekly + 3600 * 24 * 7 < FUtil.getUnixTime())
+            if (FUtil.parseLongOffset(lastBackupWeekly, "1w") < FUtil.getUnixTime())
             {
                 performBackup(file, "weekly");
                 config.set(save + ".weekly", FUtil.getUnixTime());
@@ -65,16 +67,16 @@ public class BackupManager extends FreedomService
         }
 
         // Daily
-        if (!config.isInt(save + ".daily"))
+        if (!config.isLong(save + ".daily"))
         {
             performBackup(file, "daily");
             config.set(save + ".daily", FUtil.getUnixTime());
         }
         else
         {
-            int lastBackupDaily = config.getInt(save + ".daily");
+            long lastBackupDaily = config.getLong(save + ".daily");
 
-            if (lastBackupDaily + 3600 * 24 < FUtil.getUnixTime())
+            if (FUtil.parseLongOffset(lastBackupDaily, "1d") < FUtil.getUnixTime())
             {
                 performBackup(file, "daily");
                 config.set(save + ".daily", FUtil.getUnixTime());
@@ -98,5 +100,4 @@ public class BackupManager extends FreedomService
         final File newYaml = new File(backupFolder, file + "." + type + ".bak");
         FileUtil.copy(oldYaml, newYaml);
     }
-
 }
