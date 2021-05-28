@@ -240,17 +240,9 @@ public class LoginProcess extends FreedomService
             if (noteCount != 0)
             {
                 String noteMessage = "This player has " + noteCount + " admin note" + (noteCount > 1 ? "s" : "") + ".";
-                JSONMessage notice = JSONMessage.create(ChatColor.GOLD + noteMessage + " Click here to view them.")
-                        .tooltip("Click here to view them.")
-                        .runCommand("/notes " + player.getName() + " list");
                 FLog.info(noteMessage);
-                for (Player p : server.getOnlinePlayers())
-                {
-                    if (plugin.al.isAdmin(p))
-                    {
-                        notice.send(p);
-                    }
-                }
+                plugin.al.messageAllAdmins(ChatColor.GOLD + noteMessage);
+                plugin.al.messageAllAdmins(ChatColor.GOLD + "Do " + ChatColor.YELLOW + "/notes " + player.getName() + " list" + ChatColor.GOLD + " to view them.");
             }
         }
 

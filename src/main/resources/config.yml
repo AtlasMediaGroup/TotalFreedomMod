@@ -35,7 +35,7 @@ server:
 
   # All players who show up as executive
   executives: [ ]
-  
+
   # All players who show up as assistant executive
   assistant_executives: []
 
@@ -434,6 +434,7 @@ blocked_commands:
     - 's:b:/viaver:_'
     - 's:b:/viaversion:_'
     - 's:b:/spark:_'
+    - 's:b://g:_'
 
   # Commands that cannot be used by muted players
   muted:
@@ -567,7 +568,7 @@ admininfo:
   - ' &6- Report those breaking the rules'
   - ' &2- And apply on our forums at the link:'
   - '&9https://forum.totalfreedom.me/d/45-admin-application-template'
-  
+
 # What to display in the vote command.
 votinginfo:
   - '&bVoting Links:'
