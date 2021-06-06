@@ -19,13 +19,13 @@ These versions are no longer under active development, however we will look to r
 | Version             | Supported          | Support End: |
 | ------------------- | ------------------ | ------------ |
 | 2021.04             | :white_check_mark: | July 2021    |
-| 2021.02             | :white_check_mark: | June 2021    |
 
 ### No Longer Supported
 These versions are no longer supported at all. It is strongly advised to update if you are running any of these versions. 
 
 | Version             | Supported          | Support Ended:      |
 | ------------------- | ------------------ | ------------------- |
+| 2021.02             | :x:                | 6 June 2021         |
 | 2020.11             | :x:                | 3 May 2021          |
 | 6.0.x (Pre-Release) | :x:                | December 2020       |
 | < 2020.11           | :x:                | December 2020       |
