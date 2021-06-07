@@ -15,6 +15,7 @@ public class WorldGuardBridge extends FreedomService
     @Override
     public void onStart()
     {
+        plugin.wr.protectWorld(plugin.wm.hubworld.getWorld());
         plugin.wr.protectWorld(plugin.wm.masterBuilderWorld.getWorld());
     }
 
