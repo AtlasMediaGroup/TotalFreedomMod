@@ -83,7 +83,6 @@ public enum ConfigEntry
     DISCORD_NEW_ADMIN_ROLE_ID(String.class, "discord.admin_role_id"),
     DISCORD_SENIOR_ADMIN_ROLE_ID(String.class, "discord.senior_admin_role_id"),
     DISCORD_DEVELOPER_ROLE_ID(String.class, "discord.developer_role_id"),
-    DISCORD_ASSISTANT_EXECUTIVE_ROLE_ID(String.class, "discord.assistant_executive_role_id"),
     DISCORD_EXECUTIVE_ROLE_ID(String.class, "discord.executive_role_id"),
     DISCORD_SERVER_OWNER_ROLE_ID(String.class, "discord.server_owner_role_id"),
     //

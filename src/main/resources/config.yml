@@ -78,8 +78,6 @@ discord:
   senior_admin_role_id: ''
   # Developer role ID
   developer_role_id: ''
-  # Assistant Executive role ID
-  assistant_executive_role_id: ''
   # Executive Admin role ID
   executive_role_id: ''
   # Owner role ID
