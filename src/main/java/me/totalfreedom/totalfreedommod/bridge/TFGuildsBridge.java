@@ -53,6 +53,6 @@ public class TFGuildsBridge extends FreedomService
         {
             return false;
         }
-        return Common.GUILD_CHAT.contains(player);
+        return Common.IN_GUILD_CHAT.contains(player);
     }
 }
