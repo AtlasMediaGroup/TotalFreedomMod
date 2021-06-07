@@ -1,5 +1,33 @@
 package me.totalfreedom.totalfreedommod.util;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Field;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.SplittableRandom;
+import java.util.TimeZone;
+import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import me.totalfreedom.totalfreedommod.TotalFreedomMod;
 import me.totalfreedom.totalfreedommod.config.ConfigEntry;
 import org.apache.commons.io.FileUtils;
@@ -20,18 +48,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.json.simple.JSONArray;
-
-import java.io.*;
-import java.lang.reflect.Field;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import static org.bukkit.Bukkit.getServer;
 
 public class FUtil
@@ -60,7 +76,7 @@ public class FUtil
             "2e06e049-24c8-42e4-8bcf-d35372af31e6", // NotInSync
             "f97c0d7b-6413-4558-a409-88f09a8f9adb" // videogamesm12
     );
-    public static final List<String> DEVELOPER_NAMES = Arrays.asList("Madgeek1450", "Prozza", "WickedGamingUK", "Wild1145", "aggelosQQ", "scripthead", "CoolJWB", "elmon_", "speednt", "SupItsDillon", "Paldiu", "AwesomePinch", "TFTWPhoenix", "abhithedev", "NotInSync", "videogamesm12");
+    public static final List<String> DEVELOPER_NAMES = Arrays.asList("Madgeek1450", "Prozza", "WickedGamingUK", "Wild1145", "aggelosQQ", "scripthead", "CoolJWB", "elmon_", "speednt", "SupItsDillon", "Paldiu", "AwesomePinch", "TFTWPhoenix","abhithedev", "NotInSync", "videogamesm12");
     public static final Map<String, ChatColor> CHAT_COLOR_NAMES = new HashMap<>();
     public static final List<ChatColor> CHAT_COLOR_POOL = Arrays.asList(
             ChatColor.DARK_RED,
@@ -258,7 +274,7 @@ public class FUtil
     public static Response sendRequest(String endpoint, String method, List<String> headers, String body) throws IOException
     {
         URL url = new URL(endpoint);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
         connection.setRequestMethod(method);
 
@@ -377,8 +393,7 @@ public class FUtil
         }
     }
 
-    private static final List<String> regxList = new ArrayList<String>()
-    {{
+    private static final List<String> regxList = new ArrayList<String>(){{
         add("y");
         add("mo");
         add("w");
@@ -388,13 +403,11 @@ public class FUtil
         add("s");
     }};
 
-    private static long a(String parse)
-    {
+    private static long a(String parse) {
         StringBuilder sb = new StringBuilder();
 
         regxList.forEach(obj -> {
-            if (parse.endsWith(obj))
-            {
+            if (parse.endsWith(obj)) {
                 sb.append(parse.split(obj)[0]);
             }
         });
@@ -402,8 +415,7 @@ public class FUtil
         return Long.parseLong(sb.toString());
     }
 
-    private static TimeUnit verify(String arg)
-    {
+    private static TimeUnit verify(String arg) {
         TimeUnit unit = null;
         for (String c : regxList)
         {
@@ -447,16 +459,6 @@ public class FUtil
             instant = instant.plusSeconds(verify(arg).get() * a(arg));
         }
         return Date.from(instant);
-    }
-
-    public static long parseLongOffset(long unix, String... time)
-    {
-        Instant instant = Instant.ofEpochMilli(unix);
-        for (String arg : time)
-        {
-            instant = instant.plusSeconds(verify(arg).get() * a(arg));
-        }
-        return FUtil.getUnixTime(Date.from(instant));
     }
 
     public static String playerListToNames(Set<OfflinePlayer> players)
@@ -551,7 +553,7 @@ public class FUtil
             {
                 Field field = checkClass.getDeclaredField(name);
                 field.setAccessible(true);
-                return (T) field.get(from);
+                return (T)field.get(from);
 
             }
             catch (NoSuchFieldException | IllegalAccessException ignored)
@@ -633,7 +635,7 @@ public class FUtil
     public static int randomInteger(int min, int max)
     {
         int range = max - min + 1;
-        return (int) (Math.random() * range) + min;
+        return (int)(Math.random() * range) + min;
     }
 
     public static String randomString(int length)
@@ -771,7 +773,7 @@ public class FUtil
         {
             c1values[i] = Math.round(c1values[i] + factor * (c2values[i] - c1values[i]));
         }
-        return Color.fromRGB((int) c1values[0], (int) c1values[1], (int) c1values[2]);
+        return Color.fromRGB((int)c1values[0], (int)c1values[1], (int)c1values[2]);
     }
 
     public static boolean isValidIPv4(String ip)
@@ -851,7 +853,6 @@ public class FUtil
 
     public static class PaginationList<T> extends ArrayList<T>
     {
-
         private final int epp;
 
         public PaginationList(int epp)
@@ -869,7 +870,7 @@ public class FUtil
 
         public int getPageCount()
         {
-            return (int) Math.ceil((double) size() / (double) epp);
+            return (int)Math.ceil((double)size() / (double)epp);
         }
 
         public List<T> getPage(int page)
