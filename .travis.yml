@@ -1,7 +1,10 @@
 language: java
+dist: xenial
 jdk:
   - oraclejdk11
   - openjdk11
+  - oraclejdk16
+  - openjdk16
 notifications:
   email: false
 addons:
