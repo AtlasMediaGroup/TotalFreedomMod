@@ -139,7 +139,6 @@ public class Command_ban extends FreedomCommand
         for (String ip : ips)
         {
             ban.addIp(ip);
-            ban.addIp(FUtil.getFuzzyIp(ip));
         }
         plugin.bm.addBan(ban);
 
