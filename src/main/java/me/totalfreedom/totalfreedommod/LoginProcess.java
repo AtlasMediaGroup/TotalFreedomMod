@@ -4,7 +4,6 @@ import io.papermc.lib.PaperLib;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-import me.rayzr522.jsonmessage.JSONMessage;
 import me.totalfreedom.totalfreedommod.config.ConfigEntry;
 import me.totalfreedom.totalfreedommod.player.FPlayer;
 import me.totalfreedom.totalfreedommod.player.PlayerData;

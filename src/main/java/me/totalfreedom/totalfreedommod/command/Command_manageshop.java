@@ -35,8 +35,8 @@ public class Command_manageshop extends FreedomCommand
             }
             switch (args[1])
             {
-
                 case "add":
+                {
                     try
                     {
                         int amount = Math.max(0, Math.min(1000000, Integer.parseInt(args[2])));
@@ -75,7 +75,9 @@ public class Command_manageshop extends FreedomCommand
                         msg("Invalid number: " + args[2], ChatColor.RED);
                         return true;
                     }
+                }
                 case "remove":
+                {
                     try
                     {
                         int amount = Math.max(0, Math.min(1000000, Integer.parseInt(args[2])));
@@ -122,7 +124,9 @@ public class Command_manageshop extends FreedomCommand
                         msg("Invalid number: " + args[2], ChatColor.RED);
                         return true;
                     }
+                }
                 case "set":
+                {
                     try
                     {
                         int amount = Math.max(0, Math.min(1000000, Integer.parseInt(args[2])));
@@ -147,6 +151,11 @@ public class Command_manageshop extends FreedomCommand
                         msg("Invalid number: " + args[2], ChatColor.RED);
                         return true;
                     }
+                }
+                default:
+                {
+                    return false;
+                }
             }
         }
         else if (args[0].equals("items"))

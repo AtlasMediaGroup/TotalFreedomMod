@@ -116,8 +116,12 @@ public class Command_notes extends FreedomCommand
                 msg("Cleared " + count + " notes.", ChatColor.GREEN);
                 return true;
             }
+
+            default:
+            {
+                return false;
+            }
         }
-        return false;
     }
 
     @Override

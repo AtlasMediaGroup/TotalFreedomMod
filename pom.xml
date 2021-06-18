@@ -106,11 +106,6 @@
         </repository>
 
         <repository>
-            <id>rayzr-repo</id>
-            <url>https://cdn.rawgit.com/Rayzr522/maven-repo/master/</url>
-        </repository>
-
-        <repository>
             <id>ess-repo</id>
             <url>https://ci.ender.zone/plugin/repository/everything/</url>
         </repository>
@@ -213,13 +208,6 @@
             <groupId>io.papermc</groupId>
             <artifactId>paperlib</artifactId>
             <version>1.0.6</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>me.rayzr522</groupId>
-            <artifactId>jsonmessage</artifactId>
-            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
 
@@ -454,7 +442,6 @@
                                     <include>commons-codec:commons-codec</include>
                                     <include>org.reflections:reflections</include>
                                     <include>org.javassist:javassist</include>
-                                    <include>me.rayzr522:jsonmessage</include>
                                     <include>io.papermc:paperlib</include>
                                     <include>com.github.speedxx:Mojangson</include>
                                     <include>org.bstats:bstats-bukkit</include>

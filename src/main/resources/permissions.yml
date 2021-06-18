@@ -1,16 +1,50 @@
 #
-# TotalFreedomMod Permissions
+# TotalFreedomMod 5.5 Permissions
 # by ZeroEpoch1969
 #
 
 # Note that every group inherits the previous groups' permissions
-# Meaning Senior Admins have the permissions of Operators and Admins, and etc
+# Meaning Telnet Admins have the permissions of Operators and Super Admins, and etc
 
 # This is used to remove all permission begging with the root node
 # This is useful when a plugin gives all permissions to a player because they are opped
 remove:
   - "voxelsniper"
-  - "bending"
+  - "bending.admin"
+  - "bending.ability.Cleanse"
+  - "worldedit.brush.apply"
+  - "essentials.near.exclude"
+  - "plots.admin"
+  - "plots.debugroadregen"
+  - "plots.debugclaimtest"
+  - "plots.debugpaste"
+  - "plots.debugallowunsafe"
+  - "plots.debugloadtest"
+  - "plots.debugsavetest"
+  - "plots.cluster"
+  #Crackshot
+  - "crackshot.bypass.all"
+  #NetworkManager
+  - "networkmanager.*" 
+  - "networkmanager.notify.joinbanned"
+  - "networkmanager.notify.*"
+  - "networkmanager.announce.global"
+  - "networkmanager.announce"
+  - "networkmanager.chatlock"
+  - "networkmanager.clearchat.bypass"
+  - "networkmanager.clearchat.*"
+  - "networkmanager.notify.ticket.new"
+  - "networkmanager.lookup"
+  - "networkmanager.maintenance.*"
+  - "networkmanager.permissions"
+  - "networkmanager.reports"
+  - "networkmanager.tickets"
+  - "networkmanager.chatlock.bypass"
+  - "networkmanager.anticaps.bypass"
+  - "networkmanager.antispam.bypass"
+  - "networkmanager.commandblocker.bypass"
+  - "networkmanager.tags.*"
+
 
 # Operator permission nodes
 operators:
@@ -36,16 +70,79 @@ operators:
   - "worldedit.removebelow"
   - "worldedit.removenear"
   - "worldedit.replacenear"
-
+  - "worldedit.brush.*"
+  - "worldedit.global-mask"
+  - "worldedit.fill"
+  - "worldedit.fill.recursive"
   # LibsDisguises
   - "libsdisguises.noactionbar"
-
+  
   # WorldGuard
   - "worldguard.region.list.own"
   - "worldguard.region.addmember.own.*"
   - "worldguard.region.removemember.own.*"
   - "worldguard.region.info.*"
 
+  # Bending
+  - "bending.command.add"
+  - "bending.command.bind"
+  - "bending.command.check"
+  - "bending.command.choose"
+  - "bending.command.rechoose"
+  - "bending.command.clear"
+  - "bending.command.copy"
+  - "bending.command.display"
+  - "bending.command.help"
+  - "bending.command.invincible"
+  - "bending.command.preset"
+  - "bending.command.preset.list"
+  - "bending.command.preset.create"
+  - "bending.command.preset.delete"
+  - "bending.command.preset.bind"
+  - "bending.command.preset.bind.assign"
+  - "bending.command.preset.bind.external"
+  - "bending.command.toggle"
+  - "bending.command.version"
+  - "bending.command.who"
+  - "bending.earth"
+  - "bending.air"
+  - "bending.fire"
+  - "bending.water"
+  - "bending.water.bloodbending.anytime"
+  - "bending.ability.AvatarState"
+  - "bending.command.add.chi"
+  - "bending.command.choose.chi"
+  - "bending.ability.Paralyze"
+  - "bending.ability.RapidPunch"
+  - "bending.ability.Smokescreen"
+  - "bending.ability.WarriorStance"
+  - "bending.ability.AcrobatStance"
+  - "bending.ability.QuickStrike"
+  - "bending.ability.SwiftKick"
+  - "bending.ability.ChiCombo"
+  - "bending.chi.passive"
+  - "bending.ability.MetalClips.throw"
+  - "bending.ability.AirCombo"
+  - "bending.ability.Flight"
+  - "bending.ability.WaterCombo"
+  - "bending.ability.EarthCombo"
+  - "bending.ability.FireCombo"
+  - "bending.ability.ChiCombo"
+  - "bending.air.passive"
+  - "bending.chi.passive"
+  - "bending.earth.passive"
+  - "bending.fire.passive"
+  - "bending.water.passive"
+  # NetworkManager
+  - "networkmanager.chatlog"
+  - "networkmanager.find"
+  - "networkmanager.gtps"
+  - "networkmanager.lookup"
+  - "networkmanager.slashserver.*"
+  - "networkmanager.notification.join"
+  - "networkmanager.party.nolimit"
+  - "networkmanager.tabcompletechat"
+  
 # Master Builder permission nodes
 master_builders:
   - "worldedit.tool.*"
@@ -59,13 +156,25 @@ master_builders:
   - "voxelsniper.sniper"
   - "voxelsniper.goto"
   - "voxelsniper.brush.*"
-
+  
 # Admin permission nodes
 admins:
-  - "coreprotect.*"
   - "worldedit.*"
   - "worldguard.*"
-  - "bending.*"
+  - "bending.admin.remove"
+  - "bending.command.toggle.all"
+  - "bending.admin.toggle"
+  - "bending.command.reload"
+  - "plots.cluster"
+  - "networkmanager.adminchat"
+  - "networkmanager.announce.server"
+  - "networkmanager.socialspy"
+  - "networkmanager.fullproxy.bypass"
+  - "networkmanager.lookup.ip"
+  #Crackshot
+  - "crackshot.bypass.all"
 
 # Senior Admin permission nodes
-senior_admins: []
+senior_admins: 
+  - "bending.admin.permaremove"
+  - "bending.ability.Cleanse"

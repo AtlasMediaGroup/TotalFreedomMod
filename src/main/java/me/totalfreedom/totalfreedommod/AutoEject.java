@@ -85,6 +85,10 @@ public class AutoEject extends FreedomService
                 player.kickPlayer(kickMessage);
                 break;
             }
+            default:
+            {
+                FLog.warning("Unrecognized EjectMethod " + method.name() + " found, defaulting to STRIKE_THREE");
+            }
             case STRIKE_THREE:
             {
                 plugin.bm.addBan(Ban.forPlayerFuzzy(player, Bukkit.getConsoleSender(), null, kickMessage));

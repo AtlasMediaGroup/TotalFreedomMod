@@ -73,7 +73,7 @@ public class Landminer extends FreedomService
                 continue;
             }
 
-            if (!(player.getLocation().distanceSquared(location) <= (landmine.radius * landmine.radius)))
+            if (player.getLocation().distanceSquared(location) > (landmine.radius * landmine.radius))
             {
                 break;
             }
