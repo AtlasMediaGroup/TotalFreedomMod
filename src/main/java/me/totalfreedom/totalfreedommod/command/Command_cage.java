@@ -83,6 +83,10 @@ public class Command_cage extends FreedomCommand
                     msg("Invalid block!", ChatColor.RED);
                     break;
                 }
+                default:
+                {
+                    return false;
+                }
             }
         }
 

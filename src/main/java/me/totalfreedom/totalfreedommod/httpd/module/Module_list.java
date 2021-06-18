@@ -79,11 +79,20 @@ public class Module_list extends HTTPDModule
                     switch (admin.getRank())
                     {
                         case ADMIN:
+                        {
                             admins.add(player.getName());
                             break;
+                        }
                         case SENIOR_ADMIN:
+                        {
                             senioradmins.add(player.getName());
                             break;
+                        }
+                        default:
+                        {
+                            // Do nothing
+                            break;
+                        }
                     }
                 }
             }

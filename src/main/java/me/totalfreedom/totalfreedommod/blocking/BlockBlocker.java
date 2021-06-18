@@ -171,6 +171,11 @@ public class BlockBlocker extends FreedomService
                 }
                 break;
             }
+            default:
+            {
+                // Do nothing
+                break;
+            }
         }
 
         if (Groups.BANNERS.contains(event.getBlockPlaced().getType()))

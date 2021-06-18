@@ -7,5 +7,6 @@ public enum PunishmentType
     KICK,
     TEMPBAN,
     BAN,
-    DOOM
+    DOOM,
+    WARN
 }

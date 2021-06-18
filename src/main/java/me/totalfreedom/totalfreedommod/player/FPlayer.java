@@ -429,14 +429,19 @@ public class FPlayer
         this.warningCount = warningCount;
     }
 
-    public void incrementWarnings()
+    public void incrementWarnings(boolean quiet)
     {
         this.warningCount++;
 
         if (this.warningCount % 2 == 0)
         {
             Player p = getPlayer();
-            p.getWorld().strikeLightning(p.getLocation());
+
+            if (!quiet)
+            {
+                p.getWorld().strikeLightning(p.getLocation());
+            }
+
             FUtil.playerMsg(p, ChatColor.RED + "You have been warned at least twice now, make sure to read the rules at " + ConfigEntry.SERVER_BAN_URL.getString());
         }
     }

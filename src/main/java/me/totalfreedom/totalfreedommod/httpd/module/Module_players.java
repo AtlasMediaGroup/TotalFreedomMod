@@ -51,11 +51,20 @@ public class Module_players extends HTTPDModule
             switch (admin.getRank())
             {
                 case ADMIN:
+                {
                     admins.add(username);
                     break;
+                }
                 case SENIOR_ADMIN:
+                {
                     senioradmins.add(username);
                     break;
+                }
+                default:
+                {
+                    // Do nothing
+                    break;
+                }
             }
         }
 

@@ -29,6 +29,7 @@ public class Command_potion extends FreedomCommand
         switch (args.length)
         {
             case 1:
+            {
                 if (args[0].equalsIgnoreCase("list"))
                 {
                     List<String> potionEffectTypeNames = new ArrayList<>();
@@ -58,8 +59,10 @@ public class Command_potion extends FreedomCommand
                         }
                     }
                 }
+            }
 
             case 2:
+            {
                 if (args[0].equalsIgnoreCase("clear"))
                 {
                     Player target = playerSender;
@@ -95,9 +98,11 @@ public class Command_potion extends FreedomCommand
                     msg("Cleared all active potion effects " + (!target.equals(playerSender) ? "from player " + target.getName() + "." : "from yourself."), ChatColor.AQUA);
                 }
                 break;
+            }
 
             case 4:
             case 5:
+            {
                 if (args[0].equalsIgnoreCase("add"))
                 {
                     Player target = playerSender;
@@ -167,8 +172,11 @@ public class Command_potion extends FreedomCommand
                                     + (!target.equals(playerSender) ? " to player " + target.getName() + "." : " to yourself."), ChatColor.AQUA);
                 }
                 break;
+            }
             default:
+            {
                 return false;
+            }
         }
         return true;
     }
@@ -179,14 +187,17 @@ public class Command_potion extends FreedomCommand
         switch (args.length)
         {
             case 1:
+            {
                 List<String> arguments = new ArrayList<>(Arrays.asList("list", "clear", "add"));
                 if (plugin.al.isAdmin(sender))
                 {
                     arguments.add("clearall");
                 }
                 return arguments;
+            }
 
             case 2:
+            {
                 if (args[0].equals("clear"))
                 {
                     if (plugin.al.isAdmin(sender))
@@ -199,22 +210,28 @@ public class Command_potion extends FreedomCommand
                     return getAllPotionTypes();
                 }
                 break;
+            }
 
             case 3:
+            {
                 if (args[0].equals("add"))
                 {
                     return Collections.singletonList("<duration>");
                 }
                 break;
+            }
 
             case 4:
+            {
                 if (args[0].equals("add"))
                 {
                     return Collections.singletonList("<amplifier>");
                 }
                 break;
+            }
 
             case 5:
+            {
                 if (plugin.al.isAdmin(sender))
                 {
                     if (args[0].equals("add"))
@@ -223,6 +240,12 @@ public class Command_potion extends FreedomCommand
                     }
                 }
                 break;
+            }
+
+            default:
+            {
+                break;
+            }
         }
 
         return Collections.emptyList();

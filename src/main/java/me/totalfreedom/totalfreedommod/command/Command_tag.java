@@ -105,6 +105,11 @@ public class Command_tag extends FreedomCommand
                     }
                     return true;
                 }
+
+                default:
+                {
+                    return false;
+                }
             }
         }
         else if (args.length >= 2)
@@ -278,6 +283,11 @@ public class Command_tag extends FreedomCommand
 
                     msg("Tag set to '" + outputTag + ChatColor.GRAY + "'." + (save ? " (Saved)" : "") + from + to);
                     return true;
+                }
+
+                default:
+                {
+                    return false;
                 }
             }
         }

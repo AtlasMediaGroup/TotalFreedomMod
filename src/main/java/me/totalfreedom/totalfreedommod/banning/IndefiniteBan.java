@@ -43,6 +43,7 @@ public class IndefiniteBan implements IConfig
     @Override
     public void saveTo(ConfigurationSection cs)
     {
+        // The indefinite ban list is only intended to be modified manually. It is not intended to save.
     }
 
     @Override
