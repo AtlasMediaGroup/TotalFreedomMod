@@ -8,5 +8,10 @@ public enum PunishmentType
     TEMPBAN,
     BAN,
     DOOM,
-    WARN
+    WARN,
+    CAGE,
+    BLOCKEDIT,
+    BLOCKPVP,
+    BLOCKCMD,
+    ORBIT
 }

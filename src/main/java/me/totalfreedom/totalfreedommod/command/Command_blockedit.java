@@ -1,6 +1,8 @@
 package me.totalfreedom.totalfreedommod.command;
 
 import me.totalfreedom.totalfreedommod.player.FPlayer;
+import me.totalfreedom.totalfreedommod.punishments.Punishment;
+import me.totalfreedom.totalfreedommod.punishments.PunishmentType;
 import me.totalfreedom.totalfreedommod.rank.Rank;
 import me.totalfreedom.totalfreedommod.util.FUtil;
 import org.apache.commons.lang.ArrayUtils;
@@ -128,6 +130,8 @@ public class Command_blockedit extends FreedomCommand
 
             msg(player2, "Your block modification abilities have been blocked.", ChatColor.RED);
             msg("Blocked all block modification abilities for " + player2.getName());
+
+            plugin.pul.logPunishment(new Punishment(player2.getName(), FUtil.getIp(player2), sender.getName(), PunishmentType.BLOCKEDIT, null));
         }
         return true;
     }

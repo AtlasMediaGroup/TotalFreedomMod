@@ -1,6 +1,8 @@
 package me.totalfreedom.totalfreedommod.command;
 
 import me.totalfreedom.totalfreedommod.player.FPlayer;
+import me.totalfreedom.totalfreedommod.punishments.Punishment;
+import me.totalfreedom.totalfreedommod.punishments.PunishmentType;
 import me.totalfreedom.totalfreedommod.rank.Rank;
 import me.totalfreedom.totalfreedommod.util.FUtil;
 import org.bukkit.ChatColor;
@@ -56,11 +58,13 @@ public class Command_orbit extends FreedomCommand
             }
         }
 
+        FUtil.adminAction(sender.getName(), "Orbiting " + player.getName(), false);
+
         player.setGameMode(GameMode.SURVIVAL);
         playerdata.startOrbiting(strength);
-
         player.setVelocity(new Vector(0, strength, 0));
-        FUtil.adminAction(sender.getName(), "Orbiting " + player.getName(), false);
+
+        plugin.pul.logPunishment(new Punishment(player.getName(), FUtil.getIp(player), sender.getName(), PunishmentType.ORBIT, null));
         return true;
     }
 }
