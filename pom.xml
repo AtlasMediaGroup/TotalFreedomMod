@@ -161,7 +161,7 @@
             <version>541e9fdb84</version>
             <scope>provided</scope>
         </dependency>
-             
+
         <dependency>
             <groupId>com.github.AtlasMediaGroup</groupId>
             <artifactId>TF-LibsDisguises</artifactId>
