@@ -23,12 +23,12 @@ public class Command_freeze extends FreedomCommand
 
             if (!gFreeze)
             {
-                FUtil.adminAction(sender.getName(), "Disabling global player freeze", false);
+                FUtil.adminAction(sender.getName(), "Unfreezing all players", false);
                 msg("Players are now free to move.");
                 return true;
             }
 
-            FUtil.adminAction(sender.getName(), "Enabling global player freeze", false);
+            FUtil.adminAction(sender.getName(), "Freezing all players", false);
             for (Player player : server.getOnlinePlayers())
             {
                 if (!isAdmin(player))
