@@ -33,7 +33,7 @@ public class Command_seed extends FreedomCommand
         else
         {
             // If the sender is a Player, use that world. Otherwise, use the overworld as a fallback.
-            if (sender instanceof Player)
+            if (!senderIsConsole)
             {
                 world = playerSender.getWorld();
             }
@@ -44,7 +44,7 @@ public class Command_seed extends FreedomCommand
         }
 
         // If the sender is not a Player, use the usual msg method to
-        if (isConsole())
+        if (senderIsConsole)
         {
             msg("Seed: [" + ChatColor.GREEN + world.getSeed() + ChatColor.WHITE + "]", ChatColor.WHITE);
         }
@@ -77,7 +77,7 @@ public class Command_seed extends FreedomCommand
     @Override
     public List<String> getTabCompleteOptions(CommandSender sender, Command command, String alias, String[] args)
     {
-        if (args.length <= 1)
+        if (args.length == 1)
         {
             // Returns a list of worlds on the server and returns it
             List<String> worlds = new ArrayList<>();
