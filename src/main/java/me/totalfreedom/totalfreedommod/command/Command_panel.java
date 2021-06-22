@@ -17,11 +17,9 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Manage your Pterodactyl panel account", usage = "/<command> <create | delete>")
 public class Command_panel extends FreedomCommand
 {
-
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-
         if (!plugin.ptero.isEnabled())
         {
             msg("Pterodactyl integration is currently disabled.", ChatColor.RED);
@@ -32,7 +30,7 @@ public class Command_panel extends FreedomCommand
 
         if (playerData.getDiscordID() == null)
         {
-            msg("You must have a linked discord account.", ChatColor.RED);
+            msg("You must have a linked Discord account.", ChatColor.RED);
             return true;
         }
 
@@ -63,13 +61,11 @@ public class Command_panel extends FreedomCommand
             }
 
             plugin.ptero.addAccountToServer(id);
-
             admin.setPteroID(id);
             plugin.al.save(admin);
             plugin.al.updateTables();
-
             plugin.dc.sendPteroInfo(playerData, username, password);
-            msg("Successfully created your Pterodactyl account. Check your DMs from " + plugin.dc.formatBotTag() + " on discord to get your credentials.", ChatColor.GREEN);
+            msg("Successfully created your Pterodactyl account. Check your DMs from " + plugin.dc.formatBotTag() + " on Discord to get your credentials.", ChatColor.GREEN);
             return true;
         }
         else if (args[0].equalsIgnoreCase("delete"))
@@ -83,18 +79,10 @@ public class Command_panel extends FreedomCommand
                 return true;
             }
 
-            boolean deleted = plugin.ptero.deleteAccount(admin.getPteroID());
-
-            if (!deleted)
-            {
-                msg("Failed to delete your Pterodactyl account.", ChatColor.RED);
-                return true;
-            }
-
+            plugin.ptero.deleteAccount(admin.getPteroID());
             admin.setPteroID(null);
             plugin.al.save(admin);
             plugin.al.updateTables();
-
             msg("Successfully deleted your Pterodactyl account.", ChatColor.GREEN);
             return true;
         }

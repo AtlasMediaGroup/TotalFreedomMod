@@ -40,6 +40,11 @@
 
     <repositories>
         <repository>
+            <id>apache-snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+        </repository>
+
+        <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
@@ -114,6 +119,11 @@
             <id>ess-repo</id>
             <url>https://ci.ender.zone/plugin/repository/everything/</url>
         </repository>
+
+        <repository>
+            <id>mattmalec-repo</id>
+            <url>https://repo.mattmalec.com/repository/releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -149,7 +159,7 @@
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
-            <version>1.8</version>
+            <version>2.2.1</version>
             <scope>compile</scope>
         </dependency>
 
@@ -191,21 +201,21 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.2.1_255</version>
+            <version>4.3.0_277</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>net.coreprotect</groupId>
             <artifactId>coreprotect</artifactId>
-            <version>19.3</version>
+            <version>19.5</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
             <artifactId>worldguard-bukkit</artifactId>
-            <version>7.0.4</version>
+            <version>7.0.5</version>
             <scope>provided</scope>
         </dependency>
 
@@ -213,13 +223,6 @@
             <groupId>io.papermc</groupId>
             <artifactId>paperlib</artifactId>
             <version>1.0.6</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>me.rayzr522</groupId>
-            <artifactId>jsonmessage</artifactId>
-            <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
 
@@ -266,17 +269,37 @@
         </dependency>
 
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
             <version>3.1.1</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.mattmalec</groupId>
+            <artifactId>Pterodactyl4J</artifactId>
+            <version>2.BETA_47</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.3.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.4.2</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>org.eclipse.sisu</groupId>
             <artifactId>org.eclipse.sisu.inject</artifactId>
@@ -301,9 +324,9 @@
                 <version>3.8.1</version>
                 <configuration>
                     <outputFileName>TotalFreedomMod.jar</outputFileName>
-                    <compilerVersion>11</compilerVersion>
-                    <source>11</source>
-                    <target>11</target>
+                    <compilerVersion>16</compilerVersion>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
 
@@ -311,7 +334,7 @@
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
-                <version>4.0.2</version>
+                <version>4.0.5</version>
                 <executions>
                     <execution>
                         <id>get-the-git-infos</id>
@@ -424,10 +447,12 @@
             </plugin>
 
             <!-- Shade -->
+            <!-- NOTE: This should only be temporary. This will need to be updated when a stable build comes out
+            that supports Java 16 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.3.0-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -439,8 +464,7 @@
                             <relocations>
                                 <relocation>
                                     <pattern>io.papermc.lib</pattern>
-                                    <shadedPattern>me.totalfreedom.totalfreedommod.paperlib
-                                    </shadedPattern> <!-- Replace this -->
+                                    <shadedPattern>me.totalfreedom.totalfreedommod.paperlib</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>org.bstats</pattern>
@@ -454,11 +478,11 @@
                                     <include>commons-codec:commons-codec</include>
                                     <include>org.reflections:reflections</include>
                                     <include>org.javassist:javassist</include>
-                                    <include>me.rayzr522:jsonmessage</include>
                                     <include>io.papermc:paperlib</include>
                                     <include>com.github.speedxx:Mojangson</include>
                                     <include>org.bstats:bstats-bukkit</include>
                                     <include>org.jetbrains:annotations</include>
+                                    <include>com.mattmalec:Pterodactyl4J</include>
                                 </includes>
                             </artifactSet>
                         </configuration>

@@ -20,7 +20,6 @@ public class Command_stop extends FreedomCommand
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
     {
-
         String reason = "Server is going offline, come back in about 20 seconds.";
 
         if (args.length != 0)
@@ -38,7 +37,6 @@ public class Command_stop extends FreedomCommand
             shutdown(STOP_CONFIRM.get(sender));
             return true;
         }
-
 
         msg("Warning: You're about to stop the server. Type /stop again to confirm you want to do this.");
 
@@ -69,6 +67,13 @@ public class Command_stop extends FreedomCommand
 
         STOP_CONFIRM.remove(sender);
 
-        server.shutdown();
+        if (plugin.ptero.isEnabled())
+        {
+            plugin.ptero.stopServer();
+        }
+        else
+        {
+            server.shutdown();
+        }
     }
 }
