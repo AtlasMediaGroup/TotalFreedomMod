@@ -20,7 +20,7 @@ public class Pterodactyl extends FreedomService
 {
     public final String URL = ConfigEntry.PTERO_URL.getString();
     private final String ADMIN_KEY = ConfigEntry.PTERO_ADMIN_KEY.getString();
-    private final String CLIENT_KEY = ConfigEntry.PTERO_SERVER_KEY.getString();
+    private final String CLIENT_KEY = ConfigEntry.PTERO_CLIENT_KEY.getString();
     private final String IDENTIFIER = ConfigEntry.PTERO_SERVER_UUID.getString();
     private final PteroApplication adminAPI = PteroBuilder.createApplication(URL, ADMIN_KEY);
     private final PteroClient clientAPI = PteroBuilder.createClient(URL, CLIENT_KEY);

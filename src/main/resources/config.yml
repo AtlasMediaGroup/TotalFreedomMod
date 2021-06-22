@@ -85,18 +85,22 @@ discord:
   # Owner role ID
   server_owner_role_id: ''
 
-# Pterodactyl
+# Pterodactyl (requires Discord verification to be enabled)
 ptero:
   # URL - do not leave a trailing forward slash
   url: ''
   # The default email domain used to set email addresses for new users - do not include the @
   default_email_domain: 'example.com'
-  # Server UUID
+  # Short Server UUID (for example: a538a220)
   server_uuid: ''
   # Admin panel API key
+  # Create this key by going to Settings > Application API > Create New
+  # Make sure you give it Users and Servers permissions
   admin_key: ''
-  # Server API key
-  server_key: ''
+  # Client API key
+  # Create a new user and add them as a subuser to the server with all control privileges.
+  # Then, login to the new user account and go to User Settings. Click on API Credentials and create a new one.
+  client_key: ''
 
 # The shop
 shop:

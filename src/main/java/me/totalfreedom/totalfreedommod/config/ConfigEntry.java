@@ -91,7 +91,7 @@ public enum ConfigEntry
     PTERO_DEFAULT_EMAIL_DOMAIN(String.class, "ptero.default_email_domain"),
     PTERO_SERVER_UUID(String.class, "ptero.server_uuid"),
     PTERO_ADMIN_KEY(String.class, "ptero.admin_key"),
-    PTERO_SERVER_KEY(String.class, "ptero.server_key"),
+    PTERO_CLIENT_KEY(String.class, "ptero.client_key"),
     //
     SHOP_ENABLED(Boolean.class, "shop.enabled"),
     SHOP_TITLE(String.class, "shop.title"),
