@@ -1,6 +1,8 @@
 package me.totalfreedom.totalfreedommod.command;
 
 import me.totalfreedom.totalfreedommod.player.FPlayer;
+import me.totalfreedom.totalfreedommod.punishments.Punishment;
+import me.totalfreedom.totalfreedommod.punishments.PunishmentType;
 import me.totalfreedom.totalfreedommod.rank.Rank;
 import me.totalfreedom.totalfreedommod.util.FUtil;
 import org.bukkit.ChatColor;
@@ -75,9 +77,11 @@ public class Command_blockcmd extends FreedomCommand
         FPlayer playerdata = plugin.pl.getPlayer(player);
         if (!playerdata.allCommandsBlocked())
         {
-            playerdata.setCommandsBlocked(true);
             FUtil.adminAction(sender.getName(), "Blocking all commands for " + player.getName(), true);
+            playerdata.setCommandsBlocked(true);
             msg("Blocked commands for " + player.getName() + ".");
+
+            plugin.pul.logPunishment(new Punishment(player.getName(), FUtil.getIp(player), sender.getName(), PunishmentType.BLOCKCMD, null));
         }
         else
         {

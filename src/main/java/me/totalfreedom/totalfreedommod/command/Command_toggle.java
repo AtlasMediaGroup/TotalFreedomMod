@@ -16,6 +16,12 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Toggles TotalFreedomMod settings", usage = "/<command> [option] [value] [value]")
 public class Command_toggle extends FreedomCommand
 {
+    private final List<String> toggles = Arrays.asList(
+            "waterplace", "fireplace", "lavaplace", "fluidspread", "lavadmg", "firespread", "frostwalk",
+            "firework", "prelog", "lockdown", "petprotect", "entitywipe", "nonuke [range] [count]",
+            "explosives [radius]", "unsafeenchs", "bells", "armorstands", "structureblocks", "jigsaws", "grindstones",
+            "jukeboxes", "spawners", "4chan", "beehives", "respawnanchors", "autotp", "autoclear", "minecarts", "mp44",
+            "landmines", "tossmob", "gravity");
 
     @Override
     public boolean run(CommandSender sender, Player playerSender, Command cmd, String commandLabel, String[] args, boolean senderIsConsole)
@@ -23,38 +29,10 @@ public class Command_toggle extends FreedomCommand
         if (args.length == 0)
         {
             msg("Available toggles: ");
-            msg("- waterplace");
-            msg("- fireplace");
-            msg("- lavaplace");
-            msg("- fluidspread");
-            msg("- lavadmg");
-            msg("- firespread");
-            msg("- frostwalk");
-            msg("- firework");
-            msg("- prelog");
-            msg("- lockdown");
-            msg("- petprotect");
-            msg("- entitywipe");
-            msg("- nonuke [range] [count]");
-            msg("- explosives [radius]");
-            msg("- unsafeenchs");
-            msg("- bells");
-            msg("- armorstands");
-            msg("- structureblocks");
-            msg("- jigsaws");
-            msg("- grindstones");
-            msg("- jukeboxes");
-            msg("- spawners");
-            msg("- 4chan");
-            msg("- beehives");
-            msg("- respawnanchors");
-            msg("- autotp");
-            msg("- autoclear");
-            msg("- minecarts");
-            msg("- landmines");
-            msg("- mp44");
-            msg("- tossmob");
-            msg("- gravity");
+            for (String toggle : toggles)
+            {
+                msg("- " + toggle);
+            }
             return false;
         }
 
@@ -303,6 +281,16 @@ public class Command_toggle extends FreedomCommand
             {
                 toggle("Block gravity is", ConfigEntry.ALLOW_GRAVITY);
                 break;
+            }
+
+            default:
+            {
+                msg("Available toggles: ");
+                for (String toggle : toggles)
+                {
+                    msg("- " + toggle);
+                }
+                return false;
             }
         }
         return true;

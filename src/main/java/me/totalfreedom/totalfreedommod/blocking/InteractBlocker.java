@@ -36,10 +36,9 @@ public class InteractBlocker extends FreedomService
                 break;
             }
 
-            case LEFT_CLICK_AIR:
-            case LEFT_CLICK_BLOCK:
+            default:
             {
-                //
+                // Do nothing
                 break;
             }
         }
@@ -156,6 +155,11 @@ public class InteractBlocker extends FreedomService
                 player.getInventory().clear(player.getInventory().getHeldItemSlot());
                 player.sendMessage(ChatColor.GRAY + "Books are currently disabled.");
                 event.setCancelled(true);
+                break;
+            }
+            default:
+            {
+                // Do nothing
                 break;
             }
         }

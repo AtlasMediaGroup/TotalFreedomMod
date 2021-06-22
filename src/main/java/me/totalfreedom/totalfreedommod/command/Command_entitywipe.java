@@ -64,6 +64,12 @@ public class Command_entitywipe extends FreedomCommand
                     return true;
                 }
 
+                if (type == EntityType.PLAYER)
+                {
+                    msg("Player entities cannot be purged.", ChatColor.RED);
+                    return true;
+                }
+
                 if (!getAllEntities().contains(type))
                 {
                     msg(FUtil.formatName(type.name()) + " is an entity, however: it is a mob.", ChatColor.RED);

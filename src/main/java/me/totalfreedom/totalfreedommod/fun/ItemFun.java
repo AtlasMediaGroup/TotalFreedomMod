@@ -128,7 +128,7 @@ public class ItemFun extends FreedomService
 
             LivingEntity livingEntity = (LivingEntity)event.getRightClicked();
             EntityType entityType = livingEntity.getType();
-            if (!(entityType == fPlayer.mobThrowerCreature()))
+            if (entityType != fPlayer.mobThrowerCreature())
             {
                 return;
             }
@@ -302,6 +302,11 @@ public class ItemFun extends FreedomService
                     }
                     cooldown(player, ShopItem.CLOWN_FISH, 30);
                 }
+                break;
+            }
+            default:
+            {
+                // Do nothing
                 break;
             }
         }
