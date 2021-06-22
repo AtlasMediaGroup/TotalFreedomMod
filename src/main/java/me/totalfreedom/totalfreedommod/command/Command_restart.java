@@ -55,7 +55,7 @@ public class Command_restart extends FreedomCommand
                 if (RESTART_CONFIRM.containsKey(sender))
                 {
                     RESTART_CONFIRM.remove(sender);
-                    msg("Stop request expired.");
+                    msg("Restart request expired.");
                 }
             }
         }.runTaskLater(plugin, 15 * 20);
