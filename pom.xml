@@ -163,9 +163,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.TotalFreedomMC</groupId>
+            <groupId>com.github.AtlasMediaGroup</groupId>
             <artifactId>TF-LibsDisguises</artifactId>
-            <version>48f01cf2fe</version>
+            <version>5a340341b0</version>
             <scope>provided</scope>
         </dependency>
 
