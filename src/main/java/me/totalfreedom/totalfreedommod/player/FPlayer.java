@@ -1,7 +1,5 @@
 package me.totalfreedom.totalfreedommod.player;
 
-import java.util.ArrayList;
-import java.util.List;
 import me.totalfreedom.totalfreedommod.TotalFreedomMod;
 import me.totalfreedom.totalfreedommod.caging.CageData;
 import me.totalfreedom.totalfreedommod.config.ConfigEntry;
@@ -16,8 +14,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FPlayer
 {
+
     public static final long AUTO_PURGE_TICKS = 5L * 60L * 20L;
 
 
@@ -247,7 +249,7 @@ public class FPlayer
     public void startArrowShooter(TotalFreedomMod plugin)
     {
         this.stopArrowShooter();
-        this.mp44ScheduleTask = new ArrowShooter(this.player).runTaskTimer(plugin, 1L, 1L);
+        this.mp44ScheduleTask = new ArrowShooter(getPlayer()).runTaskTimer(plugin, 1L, 1L);
         this.mp44Firing = true;
     }
 
@@ -709,8 +711,11 @@ public class FPlayer
         @Override
         public void run()
         {
-            Arrow shot = player.launchProjectile(Arrow.class);
-            shot.setVelocity(shot.getVelocity().multiply(2.0));
+            if (player != null)
+            {
+                Arrow shot = player.launchProjectile(Arrow.class);
+                shot.setVelocity(shot.getVelocity().multiply(2.0));
+            }
         }
     }
 }
