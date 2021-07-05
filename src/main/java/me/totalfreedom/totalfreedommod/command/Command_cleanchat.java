@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 @CommandPermissions(level = Rank.ADMIN, source = SourceType.BOTH)
 @CommandParameters(description = "Clears the chat.", usage = "/<command>", aliases = "cc")
-public class Command_clearchat extends FreedomCommand
+public class Command_cleanchat extends FreedomCommand
 {
 
     @Override
