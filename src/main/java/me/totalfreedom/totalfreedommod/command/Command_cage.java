@@ -77,13 +77,26 @@ public class Command_cage extends FreedomCommand
                 }
                 case "block":
                 {
-                    if (Material.matchMaterial(args[2]) != null)
+                    if (args.length >= 3)
                     {
-                        outerMaterial = Material.matchMaterial(args[2]);
-                        break;
+                        // Checks the validity of the Material and checks if it's a block.
+                        // This is incredibly inefficient, as Spigot's isBlock() method in Material is an actual
+                        // nightmare of switch-cases.
+                        if (Material.matchMaterial(args[2]) != null && Material.matchMaterial(args[2]).isBlock())
+                        {
+                            outerMaterial = Material.matchMaterial(args[2]);
+                            break;
+                        }
+                        else
+                        {
+                            msg("Invalid block!", ChatColor.RED);
+                            return true;
+                        }
                     }
-                    msg("Invalid block!", ChatColor.RED);
-                    break;
+                    else
+                    {
+                        return false;
+                    }
                 }
                 default:
                 {
